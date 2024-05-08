@@ -141,7 +141,6 @@ const activationService = new ActivationService();
 const initializeService = new InitializeService();
 const testModeServices = new TestModeServices();
 const behaviorService = new BehaviourServices();
-const scriptAVDScript = new AVDScript();
 const server = new grpc.Server();
 server.addService(activationProtoservice.NodeActivation.service, {
   StartActivation: activationService.startActivation,
@@ -222,7 +221,17 @@ try {
     script.CheckIfActivated().then(async (activated) => {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
-        scriptAVDScript.openWhatsappTest();
+        const avdScript = new AVDScript(true);
+        var exist = await avdScript.openWhatsappTest();
+        if (!exist) {
+            console.log("Not open Whatsapp Test");
+            return;
+          }
+          else {
+            console.log(" Whatsapp Test");
+            return;
+
+          }
         // await this.delayFunc(4000);
         // exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`);
         // await new Promise((resolve) => setTimeout(resolve, 1500));
