@@ -204,6 +204,7 @@ try{
             if (!activated) {
                 console.log("\n * No avd activated, Starting init script. \n");
                 exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`); 
+                console.log(exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`));
                 return;
                 //TODO update saby data to activated false and activationStatus Not Active
             } else {
