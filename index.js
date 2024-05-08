@@ -239,7 +239,14 @@ try {
             resolve();
           });
         });
-        console.log(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`);
+        var ProfileInfoActivity = exec(
+            `${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`
+          );
+          await new Promise((resolve, reject) => {
+            ProfileInfoActivity.on("close", (code) => {
+              resolve();
+            });
+          });
 
       
 
