@@ -203,7 +203,7 @@ try{
         script.CheckIfActivated().then(async activated => {
             if (!activated) {
                 console.log("\n * No avd activated, Starting init script. \n");
-                exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`); 
+                // exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`); 
                 return;
                 //TODO update saby data to activated false and activationStatus Not Active
             } else {
