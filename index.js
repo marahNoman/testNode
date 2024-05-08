@@ -246,7 +246,7 @@ try {
         exec(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`)
         console.log(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`);
         const py = new Python();
-        
+        await new Promise((resolve) => setTimeout(resolve, 1500));
         var editStatus =  await py.findAndClick(`${IMG}editStatusTest.png`,null,5);
         if(!editStatus){
             console.log("editStatus img not found");
