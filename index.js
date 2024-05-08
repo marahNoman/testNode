@@ -241,6 +241,7 @@ try {
         });
         
         exec(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`)
+        console.log(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`);
 
       
 
