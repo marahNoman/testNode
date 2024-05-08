@@ -239,7 +239,7 @@ try {
             resolve();
           });
         });
-        
+        await new Promise((resolve) => setTimeout(resolve, 1500));
         exec(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`)
         console.log(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`);
 
