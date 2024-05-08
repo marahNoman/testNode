@@ -20,6 +20,8 @@ import process from "node:process";
 import { BehaviourScript } from "./scripts/BehaviortScripts.js";
 import { exec } from "child_process";
 import os from "os";
+import {WhatsAppHelper} from "./helpers/WhatsApp.js";
+
 var user = os.userInfo().username;
 const ADB = `/home/${user}/Android/Sdk/platform-tools/adb`;
 
@@ -141,6 +143,7 @@ const activationService = new ActivationService();
 const initializeService = new InitializeService();
 const testModeServices = new TestModeServices();
 const behaviorService = new BehaviourServices();
+
 const server = new grpc.Server();
 server.addService(activationProtoservice.NodeActivation.service, {
   StartActivation: activationService.startActivation,
@@ -221,28 +224,20 @@ try {
     script.CheckIfActivated().then(async (activated) => {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
-        const avdScript = new AVDScript(true);
-        var exist = await avdScript.openWhatsappTest();
-        if (!exist) {
-            console.log("Not open Whatsapp Test");
-            return;
-          }
-          else {
-            console.log(" Whatsapp Test");
-            return;
+        const whatsappHelper = new WhatsAppHelper();
 
-          }
+        await whatsappHelper.stopWhatsApp();
         // await this.delayFunc(4000);
         // exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`);
-        // await new Promise((resolve) => setTimeout(resolve, 1500));
-        // var startApp = exec(
-        //   `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
-        // );
-        // await new Promise((resolve, reject) => {
-        //   startApp.on("close", (code) => {
-        //     resolve();
-        //   });
-        // });
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var startApp = exec(
+          `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
+        );
+        await new Promise((resolve, reject) => {
+          startApp.on("close", (code) => {
+            resolve();
+          });
+        });
         return;
         //TODO update saby data to activated false and activationStatus Not Active
       } else {
