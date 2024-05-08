@@ -240,14 +240,14 @@ try {
           });
         });
         var ProfileInfoActivity = exec(
-            `${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`
+            `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.profile.ProfileInfoActivity`
           );
           await new Promise((resolve, reject) => {
             ProfileInfoActivity.on("close", (code) => {
               resolve();
             });
           });
-
+          console.log("com.whatsapp/.profile.ProfileInfoActivity");
       
 
         return;
