@@ -20,8 +20,6 @@ import process from "node:process";
 import { BehaviourScript } from "./scripts/BehaviortScripts.js";
 import { exec } from "child_process";
 import os from "os";
-import {WhatsAppHelper} from "./helpers/WhatsApp.js";
-
 var user = os.userInfo().username;
 const ADB = `/home/${user}/Android/Sdk/platform-tools/adb`;
 
@@ -224,11 +222,14 @@ try {
     script.CheckIfActivated().then(async (activated) => {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
-        const whatsappHelper = new WhatsAppHelper();
-
-        await whatsappHelper.stopWhatsApp();
-        // await this.delayFunc(4000);
-        // exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`);
+        console.log("inside stopWhatsapp");
+        console.log(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
+        var stop =  exec(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
+        await new Promise((resolve, reject)=>{
+            stop.on('close',(code)=>{
+                resolve();
+            });
+        });
         await new Promise((resolve) => setTimeout(resolve, 1500));
         var startApp = exec(
           `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
