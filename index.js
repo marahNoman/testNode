@@ -13,7 +13,7 @@ import protoLoader from "@grpc/proto-loader";
 import { SocketScript } from "./scripts/SocketScript.js";
 import { CleanupScript } from "./scripts/CleanupScript.js";
 import { SabyInfoRepository } from "./Repository/SabyInfoRepo.js";
-import { AVDScript } from "/scripts/avd_script.js";
+import { AVDScript } from "./scripts/avd_script.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import process from "node:process";
