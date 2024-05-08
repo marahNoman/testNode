@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+service Behavior{
+    rpc OneToOne(SabyObjects) returns (Response) {}
+    rpc SingleBehaviour(SabyObjects) returns (Response) {}
+    rpc ReplayMessage(ReplayModel) returns (Response){}
+    rpc AnswerCall(ReplayModel) returns (Response){}
+}
+
+message Response{
+    bool success = 1;
+    string message = 2;
+}
+
+message SabyName{
+    string username = 1;
+}
+message ReplayModel {
+    int32 numberOfReplay =1;
+    int32 numberOfMsg =2;
+}
+message SabyObjects {
+    string sabyOne = 1;
+    string sabyTwo = 2;
+    string phoneOne =3;
+    string phoneTwo =4;
+    string waOne =5;
+    string waTwo =6;
+    int32 numberOfMsg = 7;
+    bool isCall = 8;
+}

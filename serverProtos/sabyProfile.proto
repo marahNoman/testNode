@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+service SabysProfiles {
+    rpc Test(SabyID) returns(success){}
+    rpc Find (SabyID) returns (Sabyprofile) {}
+    rpc FindByUsername (GetSaby) returns (Sabyprofile) {}
+    rpc GetNewPortNubmer(GetSaby) returns (success){}
+    rpc Register(Sabyprofile) returns (success){}
+    rpc Modify(SabyModify) returns (success){}
+    rpc UpdateStatus(Status) returns (success){}
+    rpc GetEmulatorPorts(GetSaby) returns (RequiredToStart){}
+    rpc StartSaby(GetSaby) returns (responseMsg){}
+    rpc AddSabyGroup(SabyGroup) returns (success){}
+    rpc removeSabyFromGroup(SabyGroup) returns (success){}
+    rpc UpdateWhatsapp(GetSaby) returns (responseMsg){}
+    rpc AddDeactiveSaby(Status) returns (responseMsg){}
+    rpc getSabyGroup(GetSaby) returns (Group){}
+
+}
+
+  message Group{
+      repeated SabyObject list = 1;
+      string executed= 2;
+      string message= 3;
+  }
+  message SabyObject {
+    string phoneNumber = 1;
+    string waName = 2;
+  }
+
+
+  message responseMsg{
+    string message =1;
+  }
+
+  message SabyGroup{
+    string username =1;
+    string phoneNumber =2 ;
+    string waName =3 ;
+  }
+
+  message success{
+    bool executed =1;
+    string endPoint =2;
+  }
+
+  message Status{
+    string username =1;
+    string status =2;
+    string activationStatus =3;
+    string statusDetails =4;
+  }
+  message RequiredToStart{
+    string avdname=1;
+    uint32 emulatorPort= 2;
+    uint32 adbPort=3;
+  }
+  message SabyID {
+    uint32 id = 1;
+  }
+
+  message GetSaby {
+    string username = 1;
+    string ipAddress =2;
+  }
+  message SabyModify{
+    string username =1;
+    string avdName =2 ;
+    string waName =3 ;
+    string phoneNumber =4 ;
+    string sabyStatus =5;
+    bool activated =6;
+    string emulatorId =7;
+    bool IsOnline =8;
+  }
+
+
+  message Sabyprofile {
+    uint32 id = 1;
+    string avdName = 2;
+    string hostName = 3;
+    string hostType = 4;
+    string hostAPI = 5;
+    string hostAsterisk = 6;
+    string hostBeanstalk = 7;
+    string emulatorAlpha = 8;
+    string emulatorID = 9;
+    uint32 emulatorPort = 10;
+    uint32 emulatorX = 11;
+    uint32 emulatorY = 12;
+    uint32 emulatorWidth = 13;
+    uint32 emulatorHeight = 14;
+    uint32 androidProfile = 15;
+    uint32 adbPort =16;
+    string profileType = 17;
+    string username = 18;
+    string endPoint=19;
+    string sabyStatus =20;
+    string ipAddress = 21;
+    string vpnRegion=22;
+  }

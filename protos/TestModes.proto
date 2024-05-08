@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+service TestModes {
+    rpc StartTestMode(Request) returns(Response){}
+  }
+
+  message Response{
+    string value = 1;
+  }
+  
+  message Request{
+    string action = 1;
+    string applicationID = 2;
+    string outCallee = 3;
+    string cleanCallee = 4;
+    string caller = 5;
+    string uniqueID = 6;
+    string timeoutAck = 7;
+    string timeoutResponse = 8;
+    string username = 9;
+    string priority = 10;
+  }

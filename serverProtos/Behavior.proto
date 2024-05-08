@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+service Behavior{
+    rpc OneToOne(SabyObject) returns (Response) {}
+    rpc StartBehavior(Saby) returns (Response){}
+    rpc SingleBehaviour(Saby) returns (Response) {}
+    rpc ReplayMessages(Saby) returns (Response) {}
+    rpc AnswerCall(Saby) returns (Response) {}
+    rpc getRandomSabyGroup(Saby) returns (ResponseSabyGroup) {}
+    rpc getSabyFromGroup(Saby) returns (ResponseSabyGroup) {}
+    rpc checkSabyChat(SabyChat) returns (ResponseSabyChat) {}
+    rpc RemoveSabyChat(SabyChat) returns (Response) {}
+    rpc addBehaviorHistory(SabyBehavior) returns (Response) {}
+
+}
+
+message Response{
+    bool success = 1;
+    string message = 2;
+}
+message ResponseSabyGroup{
+    string phoneNumber = 3;
+    string  waName=4;
+    bool success = 1;
+    string message = 2;
+}
+message ResponseSabyChat{
+    bool hasChat=1;
+    string phoneNumber=2;
+}
+
+message SabyList {
+    repeated SabyObject list = 1;
+}
+
+message SabyObject {
+    string sabyOne = 1;
+    string sabyTwo = 2;
+}
+
+message Saby{
+    string username =1;
+    uint32 isCall =2;
+}
+
+message SabyChat{
+    string username =1;
+}
+message SabyBehavior{
+    string username =1;
+    string behaviorType =2;
+}
+

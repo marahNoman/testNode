@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+service NodeActivation{
+    rpc StartActivation (Request) returns (Response) {}
+    rpc StartManualActivation (Request) returns (Response) {}
+}
+
+message Request{
+    string phoneNumber =1;
+    string username= 2;
+    uint32 emulatorPort= 3;
+    bool initScript= 4;
+    string  waName= 5;
+    string vpnProvider= 6;
+    uint32 countryId =7;
+    string alpha =8;
+    uint32 vpnRegion = 9;
+    string lat =10;
+    string long =11;
+    string apiRoute =12;
+  }
+
+message Response{
+    string sabyName =1 ;
+    string message =2; 
+    string phoneNumber =3;
+    bool success =4;
+}
+

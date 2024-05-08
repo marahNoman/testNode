@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+service SocketCall{
+  rpc GetAvailablePort(Empty) returns(ResponsePort){}
+  rpc ConnectSocket(SocketRequest) returns(Response){}
+  rpc NewSocketPool(socketPool) returns(Response){}
+  rpc UpdateSocketPool(socketPool) returns(Response){}
+  rpc GetSocketPool(SabyName) returns(socketPool){}
+}
+message Empty{}
+
+message ResponsePort{
+  bool success =1;
+  string message=2;
+  string port=3;
+}
+message Response{
+  bool success =1;
+  string message=2;
+}
+message socketPool{
+  string Name=1;
+  string Ip=2;
+  string Port=3;
+  string SipGateway=4;
+  string SocketPool=5;
+  string Status=6;
+  string PhoneNumber=7;
+}
+
+
+message SocketRequest {
+  string host = 1;
+  string port = 2;
+}
+
+message SabyName {
+  string Name = 1;
+}

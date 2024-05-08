@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service GeneralConfigurations {
+    rpc GetConfiguration(Request) returns(Response){}
+  }
+
+  message Response{
+    string value = 1;
+  }
+  
+  message Request{
+    string key = 1;
+  }

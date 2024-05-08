@@ -1,0 +1,28 @@
+{
+  "name": "sabydemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.4",
+    "@grpc/proto-loader": "^0.7.10",
+    "child_process": "^1.0.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "keypress": "^0.2.1",
+    "net": "^1.0.2",
+    "node-fetch": "^3.3.2",
+    "path": "^0.12.7",
+    "text-to-image": "^5.2.0",
+    "timers-promises": "^1.0.1",
+    "url": "^0.11.3"
+  }
+}

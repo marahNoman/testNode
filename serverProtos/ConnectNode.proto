@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service ConnectNodes{
+    rpc Connect(Request) returns(Response){}
+}
+message Response{
+    bool success =1;
+    string message=2;
+    string endpoint =3;
+  }
+  
+  message Request{
+    string ipAddress =1;
+    string username =2;
+    string port=3;
+  }

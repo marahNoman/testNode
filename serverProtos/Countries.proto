@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service Countries {
+    rpc GetCountry(Request) returns(Country){}
+  }
+  message Country{
+    string name=1;
+    uint32 id =2;
+    bool isVirtual =3;
+    string code =4;
+  }
+  message Request{
+    string countryCode =1;
+    uint32 countryId =2;
+    string countryName =3;
+  }

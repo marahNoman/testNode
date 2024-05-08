@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service DoJob{
+    rpc CheckIfHaveJob (Status) returns (Response) {}
+}
+
+message Response{
+    repeated Job JobName=1;
+}
+message Job{
+    string Type = 1;
+}
+
+message Status {
+    string Status = 1;
+}

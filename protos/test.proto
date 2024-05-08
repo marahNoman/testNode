@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+service Tests {
+    rpc process (Empty) returns (Request) {}
+  }
+  
+  message Empty {
+    uint32 id =1;
+  }
+  message Request{
+    string username =1 ;
+  }
