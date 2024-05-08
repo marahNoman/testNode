@@ -206,52 +206,52 @@ try{
                 console.log("saby activated");
 
 
-                //check if saby not register in active side
-                let FindByUsername=await new SabyInfoRepository().FindByUsername();
-                if(FindByUsername.activated){
-                    await new SabyInfoRepository().Modify(true, FindByUsername.emulatorID, FindByUsername.avdName, FindByUsername.waName, FindByUsername.phoneNumber, null);
-                }
+                // //check if saby not register in active side
+                // let FindByUsername=await new SabyInfoRepository().FindByUsername();
+                // if(FindByUsername.activated){
+                //     await new SabyInfoRepository().Modify(true, FindByUsername.emulatorID, FindByUsername.avdName, FindByUsername.waName, FindByUsername.phoneNumber, null);
+                // }
 
-                // check Profile info
-                const behaviourScript= new BehaviourScript(avdScript.getEmulatorPort());
-                let name = await helper.GenerateName();
-                await behaviourScript.check_profile_info(name);
-
-
-                if(await behaviourScript.check_stuck_profile_info()){
-
-                    await new SabyInfoRepository().UpdateStatus("PROFILE INFO STUCK",null,'STUCK');
-                    return false;
-
-                }
-
-                //check if have image and add if not have
-                await behaviourScript.check_if_have_image();
+                // // check Profile info
+                // const behaviourScript= new BehaviourScript(avdScript.getEmulatorPort());
+                // let name = await helper.GenerateName();
+                // await behaviourScript.check_profile_info(name);
 
 
-                //check linphone
-                const sipAndLinphone = new SipAndLinphone("135.181.130.186:1992");
-                await sipAndLinphone.startLinphoneApp();
+                // if(await behaviourScript.check_stuck_profile_info()){
+
+                //     await new SabyInfoRepository().UpdateStatus("PROFILE INFO STUCK",null,'STUCK');
+                //     return false;
+
+                // }
+
+                // //check if have image and add if not have
+                // await behaviourScript.check_if_have_image();
 
 
-                //do job
-                let jobs = [];
-                jobs = await helper.checkIfHaveJob('Preparing');
-                console.log(`Ready ${jobs}`);
-                if (jobs) {
-                    await helper.doJobs(jobs)
-                }
-
-                await new SabyInfoRepository().UpdateStatus("FIRST BEHAVIOR",null,'BEHAVIOR');
-                jobs = await helper.checkIfHaveJob('First Behavior');
-                console.log(`Ready ${jobs}`);
-                if (jobs) {
-                    await helper.doJobs(jobs);
-                }
+                // //check linphone
+                // const sipAndLinphone = new SipAndLinphone("135.181.130.186:1992");
+                // await sipAndLinphone.startLinphoneApp();
 
 
-                // clean up
-                await cleanUpScript.avdChecker();
+                // //do job
+                // let jobs = [];
+                // jobs = await helper.checkIfHaveJob('Preparing');
+                // console.log(`Ready ${jobs}`);
+                // if (jobs) {
+                //     await helper.doJobs(jobs)
+                // }
+
+                // await new SabyInfoRepository().UpdateStatus("FIRST BEHAVIOR",null,'BEHAVIOR');
+                // jobs = await helper.checkIfHaveJob('First Behavior');
+                // console.log(`Ready ${jobs}`);
+                // if (jobs) {
+                //     await helper.doJobs(jobs);
+                // }
+
+
+                // // clean up
+                // await cleanUpScript.avdChecker();
 
             }
         });
