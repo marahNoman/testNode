@@ -224,17 +224,17 @@ try {
         console.log("\n * No avd activated, Starting init script. \n");
         const script = new AVDScript();
         script.stopWhatsApp();
-        await this.delayFunc(4000);
+        // await this.delayFunc(4000);
         // exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`);
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        var startApp = exec(
-          `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
-        );
-        await new Promise((resolve, reject) => {
-          startApp.on("close", (code) => {
-            resolve();
-          });
-        });
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
+        // var startApp = exec(
+        //   `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
+        // );
+        // await new Promise((resolve, reject) => {
+        //   startApp.on("close", (code) => {
+        //     resolve();
+        //   });
+        // });
         return;
         //TODO update saby data to activated false and activationStatus Not Active
       } else {
