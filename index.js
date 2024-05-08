@@ -222,8 +222,8 @@ try {
     script.CheckIfActivated().then(async (activated) => {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
-        const script = new AVDScript();
-        script.stopWhatsApp();
+        // const script = new AVDScript();
+        avdScript.openWhatsappTest();
         // await this.delayFunc(4000);
         // exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`);
         // await new Promise((resolve) => setTimeout(resolve, 1500));

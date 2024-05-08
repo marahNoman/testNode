@@ -45,6 +45,17 @@ export class WhatsAppHelper{
             });
         });
     }
+    async openWhatsappTest(){
+        console.log("inside stopWhatsapp");
+        console.log(`${ADB} -s emulator-${this.emulatorPort} shell am force-stop com.whatsapp`);
+        var stop =  exec(`${ADB} -s emulator-${this.emulatorPort} shell am force-stop com.whatsapp`);
+        await new Promise((resolve, reject)=>{
+            stop.on('close',(code)=>{
+                resolve();
+            });
+        });
+        exec(`${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`);
+    }
     async runApplication(){
         console.log("inside runApplication")
         let appStarted =false;
