@@ -18,6 +18,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import process from 'node:process';
 import {BehaviourScript} from './scripts/BehaviortScripts.js';
+import os from 'os';
+var user =os.userInfo().username;
+const ADB = `/home/${user}/Android/Sdk/platform-tools/adb`;
 
 
 
@@ -200,11 +203,12 @@ try{
         script.CheckIfActivated().then(async activated => {
             if (!activated) {
                 console.log("\n * No avd activated, Starting init script. \n");
+                exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_HOME`); 
                 return;
                 //TODO update saby data to activated false and activationStatus Not Active
             } else {
                 console.log("saby activated");
-
+                
 
                 // //check if saby not register in active side
                 // let FindByUsername=await new SabyInfoRepository().FindByUsername();
