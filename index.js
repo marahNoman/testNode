@@ -18,6 +18,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import process from 'node:process';
 import {BehaviourScript} from './scripts/BehaviortScripts.js';
+import {exec} from "child_process";
 import os from 'os';
 var user =os.userInfo().username;
 const ADB = `/home/${user}/Android/Sdk/platform-tools/adb`;
