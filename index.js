@@ -315,26 +315,18 @@ try {
         var numberOfClicks =
           Math.floor(Math.random() * (maxClicks - minClicks + 1)) + minClicks;
 
-       
-        for(var i = 0 ; i < numberOfClicks ; i++){
-            var smailIcon = await py.findAndClick(
-                `${IMG}smailIcon.png`,
-                null,
-                5
-              );
-      
-              if (!smailIcon) {
-                console.log("smailIcon img not found");
-              } else {
-                console.log("smailIcon img found");
-              }
+        for (var i = 0; i < numberOfClicks; i++) {
+          var smailIcon = await py.findAndClick(`${IMG}smailIcon.png`, null, 5);
 
+          if (!smailIcon) {
+            console.log("smailIcon img not found");
+          } else {
+            console.log("smailIcon img found");
+          }
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        exec(
-            `${ADB} -s emulator-5164 shell input keyevent KEYCODE_BACK`
-          );
-        
+        exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_BACK`);
+
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
         var sendMessage = await py.findAndClick(
@@ -349,17 +341,14 @@ try {
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
         await py.click(514, 1400);
-        exec(
-            `${ADB} -s emulator-5164 shell input swipe 500 500 500 500 2000`
-          );
-          await new Promise((resolve) => setTimeout(resolve, 1500));
+        exec(`${ADB} -s emulator-5164 shell input swipe 500 500 500 500 2000`);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
 
         var deleteMessTest = await py.findAndClick(
           `${IMG}deleteMessTest.png`,
           null,
           5
         );
-       
 
         if (!deleteMessTest) {
           console.log("deleteMessTest img not found");
@@ -379,7 +368,6 @@ try {
           return;
         } else {
           console.log("DeleteForEveryoneTest img found");
-          
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
@@ -392,25 +380,25 @@ try {
           console.log("okDeleteMessTest img not found");
         } else {
           console.log("okDeleteMessTest img found");
-
         }
         await py.click(514, 1400);
-        exec(
-            `${ADB} -s emulator-5164 shell input swipe 700 700 700 700 2000`
-          );
-          await new Promise((resolve) => setTimeout(resolve, 1500));
-          var forwordMessTest = await py.findAndClick(
-            `${IMG}forwordMessTest.png`,
-            null,
-            5
-          );
-          if (!forwordMessTest) {
-            console.log("forwordMessTest img not found");
-            return;
-          } else {
-            console.log("forwordMessTest img found");
-  
-          }
+        exec(`${ADB} -s emulator-5164 shell input swipe 700 700 700 700 2000`);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var forwordMessTest = await py.findAndClick(
+          `${IMG}forwordMessTest.png`,
+          null,
+          5
+        );
+        if (!forwordMessTest) {
+          console.log("forwordMessTest img not found");
+          return;
+        } else {
+          console.log("forwordMessTest img found");
+        }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        exec(`${ADB} -s emulator-5164 shell input swipe 1000 1000 1000 1000 2000`);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
