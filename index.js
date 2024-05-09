@@ -350,7 +350,7 @@ try {
         await new Promise((resolve) => setTimeout(resolve, 1500));
         await py.click(514, 1400);
         exec(
-            `${ADB} -s emulator-5164 shell input keyevent --longpress 23`
+            `${ADB} -s emulator-5164 shell input swipe 500 500 500 500 2000`
           );
           await new Promise((resolve) => setTimeout(resolve, 1500));
 
