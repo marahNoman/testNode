@@ -261,7 +261,7 @@ try {
           } else {
             console.log("newChat img found");
           }
-          await new Promise((resolve) => setTimeout(resolve, 1500));
+          await new Promise((resolve) => setTimeout(resolve, 2000));
           var messageYourself = await py.findAndClick(
             `${IMG}messageYourselfTest.png`,
             null,
