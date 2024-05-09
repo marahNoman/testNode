@@ -301,7 +301,7 @@ try {
           });
           result.on("close", (code) => {
             console.log("python writeText -> exited with code : ", code);
-            written = true;
+          
             resolve();
           });
         });
