@@ -397,8 +397,18 @@ try {
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
         exec(`${ADB} -s emulator-5164 shell input swipe 1000 1000 1000 1000 2000`);
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
 
+        var sendForwardMessTest = await py.findAndClick(
+          `${IMG}sendForwardMessTest.png`,
+          null,
+          5
+        );
+        if (!sendForwardMessTest) {
+          console.log("sendForwardMessTest img not found");
+        } else {
+          console.log("sendForwardMessTest img found");
+        }
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
