@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 import process from "node:process";
 import { BehaviourScript } from "./scripts/BehaviortScripts.js";
 import { exec } from "child_process";
-import {Python} from './helpers/Python.js';
+import { Python } from "./helpers/Python.js";
 
 import os from "os";
 var user = os.userInfo().username;
@@ -227,11 +227,13 @@ try {
         console.log("\n * No avd activated, Starting init script. \n");
         console.log("inside stopWhatsapp");
         console.log(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
-        var stop =  exec(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
-        await new Promise((resolve, reject)=>{
-            stop.on('close',(code)=>{
-                resolve();
-            });
+        var stop = exec(
+          `${ADB} -s emulator-5164 shell am force-stop com.whatsapp`
+        );
+        await new Promise((resolve, reject) => {
+          stop.on("close", (code) => {
+            resolve();
+          });
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
         var startApp = exec(
@@ -243,20 +245,34 @@ try {
           });
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        exec(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`)
-        console.log(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`);
+        exec(
+          `${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`
+        );
+        console.log(
+          `${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`
+        );
         const py = new Python();
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        var editStatus =  await py.findAndClick(`${IMG}aboutStatusTest.png`,null,5);
-        if(!editStatus){
-            console.log("editStatus img not found");
-        } 
-        else{
-            console.log("editStatus img found");
-
+        var result = exec(
+          `${ADB} -s emulator-5164 exec-out uiautomator dump `
+        );
+        await new Promise((resolve, reject) => {
+          result.stderr.on("error", (err) => {
+            console.log(
+              `\n \nError in dumpScreenToFile() class ActivationScript : ${err} \n *Promise Rejected*\n \n`
+            );
+            reject();
+          });
+          result.on("close", (code) => {
+            console.log(`\ndumpScreenToFile() close with code:${code}`);
+            resolve();
+          });
+        });
+        var Coordinates = await script.SearchCoordinatesByString("About");
+        console.log(`send msg  Coordinates  : ${Coordinates}`);
+        if (Coordinates[0] !== 0 && Coordinates[1] !== 0) {
+          script.click(Coordinates[0], Coordinates[1]);
         }
-
-      
 
         return;
         //TODO update saby data to activated false and activationStatus Not Active
