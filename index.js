@@ -225,7 +225,7 @@ try {
     script.CheckIfActivated().then(async (activated) => {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
-        console.log("inside stopWhatsapp");
+        console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
         console.log(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
         var stop =  exec(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
         await new Promise((resolve, reject)=>{
@@ -244,7 +244,7 @@ try {
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
         exec(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`)
-        console.log(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`);
+        console.log("ProfileInfoActivity test >>>>>>>>>>>>>>>>>>>>>>>>");
         const py = new Python();
         await new Promise((resolve) => setTimeout(resolve, 1500));
         // var result = exec(
