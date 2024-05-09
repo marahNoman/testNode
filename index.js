@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 import process from "node:process";
 import { BehaviourScript } from "./scripts/BehaviortScripts.js";
 import { exec } from "child_process";
-import {Python} from './helpers/Python.js';
+import { Python } from "./helpers/Python.js";
 
 import os from "os";
 var user = os.userInfo().username;
@@ -225,9 +225,6 @@ try {
     script.CheckIfActivated().then(async (activated) => {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
-       
-
-      
 
         return;
         //TODO update saby data to activated false and activationStatus Not Active
@@ -235,11 +232,13 @@ try {
         console.log("saby activated");
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
         console.log(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
-        var stop =  exec(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
-        await new Promise((resolve, reject)=>{
-            stop.on('close',(code)=>{
-                resolve();
-            });
+        var stop = exec(
+          `${ADB} -s emulator-5164 shell am force-stop com.whatsapp`
+        );
+        await new Promise((resolve, reject) => {
+          stop.on("close", (code) => {
+            resolve();
+          });
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
         var startApp = exec(
@@ -251,7 +250,9 @@ try {
           });
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        exec(`${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`)
+        exec(
+          `${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`
+        );
         console.log("ProfileInfoActivity test >>>>>>>>>>>>>>>>>>>>>>>>");
         const py = new Python();
         await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -270,36 +271,52 @@ try {
         //       resolve();
         //     });
         //   });
-        var editAbout =  await py.findAndClick(`${IMG}aboutStatusTest.png`,null,5);
-        if(!editAbout){
-            console.log("editAbout img not found");
-        } 
-        else{
-            console.log("editAbout img found");
-
+        var editAbout = await py.findAndClick(
+          `${IMG}aboutStatusTest.png`,
+          null,
+          5
+        );
+        if (!editAbout) {
+          console.log("editAbout img not found");
+        } else {
+          console.log("editAbout img found");
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
-        var editStatus =  await py.findAndClick(`${IMG}editStatusTest.png`,null,5);
-        if(!editStatus){
-            console.log("editStatus img not found");
-        } 
-        else{
-            console.log("editStatus img found");
-
+        var editStatus = await py.findAndClick(
+          `${IMG}editStatusTest.png`,
+          null,
+          5
+        );
+        if (!editStatus) {
+          console.log("editStatus img not found");
+        } else {
+          console.log("editStatus img found");
         }
-        var text ="Hii All"
+        var text = "Hii All";
         var result = exec(`pythonScripts/writeText.py ${text}`);
-            await new Promise((resolve, reject)=>{
-                result.stderr.on('data',(err)=>{
-                    console.log("python writeText -> error while typing : ",err);
-                })
-                result.on('close',(code)=>{
-                    console.log("python writeText -> exited with code : ",code);
-                    written =true;
-                    resolve();
-                });
-            });
+        await new Promise((resolve, reject) => {
+          result.stderr.on("data", (err) => {
+            console.log("python writeText -> error while typing : ", err);
+          });
+          result.on("close", (code) => {
+            console.log("python writeText -> exited with code : ", code);
+            written = true;
+            resolve();
+          });
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        var saveStatus = await py.findAndClick(
+          `${IMG}saveEditAboutTest.png`,
+          null,
+          5
+        );
+        if (!saveStatus) {
+          console.log("saveStatus img not found");
+        } else {
+          console.log("saveStatus img found");
+        }
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
