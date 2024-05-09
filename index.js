@@ -270,7 +270,17 @@ try {
         //       resolve();
         //     });
         //   });
-        var editStatus =  await py.findAndClick(`${IMG}aboutStatusTest.png`,null,5);
+        var editAbout =  await py.findAndClick(`${IMG}aboutStatusTest.png`,null,5);
+        if(!editAbout){
+            console.log("editAbout img not found");
+        } 
+        else{
+            console.log("editAbout img found");
+
+        }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        var editStatus =  await py.findAndClick(`${IMG}editStatusTest.png`,null,5);
         if(!editStatus){
             console.log("editStatus img not found");
         } 
