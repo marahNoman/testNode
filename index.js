@@ -229,6 +229,7 @@ try {
         return;
         //TODO update saby data to activated false and activationStatus Not Active
       } else {
+        const py = new Python();
         console.log("saby activated");
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
         console.log(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
