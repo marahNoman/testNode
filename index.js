@@ -251,60 +251,91 @@ try {
           });
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
-          var newChat = await py.findAndClick(
-            `${IMG}newChatTest.png`,
-            null,
-            5
-          );
-          if (!newChat) {
-            console.log("newChat img not found");
-          } else {
-            console.log("newChat img found");
-          }
-          await new Promise((resolve) => setTimeout(resolve, 2000));
-          var messageYourself = await py.findAndClick(
-            `${IMG}messageYourselfTest.png`,
-            null,
-            5
-          );
-          if (!messageYourself) {
-            console.log("messageYourself img not found");
-          } else {
-            console.log("messageYourself img found");
-          }
-          await new Promise((resolve) => setTimeout(resolve, 1500));
-          var messageBox = await py.findAndClick(
-            `${IMG}messageBoxTest.png`,
-            null,
-            5
-          );
-          if (!messageBox) {
-            console.log("messageBox img not found");
-          } else {
-            console.log("messageBox img found");
-          }
-          var text = "Hii😀";
-          var result = exec(`pythonScripts/writeText.py ${text}`);
-          await new Promise((resolve, reject) => {
-            result.stderr.on("data", (err) => {
-              console.log("python writeText -> error while typing : ", err);
-            });
-            result.on("close", (code) => {
-              console.log("python writeText -> exited with code : ", code);
-            
-              resolve();
-            });
+        var newChat = await py.findAndClick(`${IMG}newChatTest.png`, null, 5);
+        if (!newChat) {
+          console.log("newChat img not found");
+        } else {
+          console.log("newChat img found");
+        }
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        var messageYourself = await py.findAndClick(
+          `${IMG}messageYourselfTest.png`,
+          null,
+          5
+        );
+        if (!messageYourself) {
+          console.log("messageYourself img not found");
+        } else {
+          console.log("messageYourself img found");
+        }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var messageBox = await py.findAndClick(
+          `${IMG}messageBoxTest.png`,
+          null,
+          5
+        );
+        if (!messageBox) {
+          console.log("messageBox img not found");
+        } else {
+          console.log("messageBox img found");
+        }
+        var text = "Hii";
+        var result = exec(`pythonScripts/writeText.py ${text}`);
+        await new Promise((resolve, reject) => {
+          result.stderr.on("data", (err) => {
+            console.log("python writeText -> error while typing : ", err);
           });
-          var sendMessage = await py.findAndClick(
-            `${IMG}sendMessageTest.png`,
-            null,
-            5
-          );
-          if (!sendMessage) {
-            console.log("sendMessage img not found");
-          } else {
-            console.log("sendMessage img found");
-          }
+          result.on("close", (code) => {
+            console.log("python writeText -> exited with code : ", code);
+
+            resolve();
+          });
+        });
+        var sendMessage = await py.findAndClick(
+          `${IMG}sendMessageTest.png`,
+          null,
+          5
+        );
+        if (!sendMessage) {
+          console.log("sendMessage img not found");
+        } else {
+          console.log("sendMessage img found");
+        }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var emojiIcon = await py.findAndClick(`${IMG}emojiIcon.png`, null, 5);
+        if (!emojiIcon) {
+          console.log("emojiIcon img not found");
+        } else {
+          console.log("emojiIcon img found");
+        }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var numberOfClicks =
+          Math.floor(Math.random() * (maxClicks - minClicks + 1)) + minClicks;
+
+        var smailIcon = await py.findAndClick(
+          `${IMG}smailIcon.png`,
+          null,
+          numberOfClicks
+        );
+
+        if (!smailIcon) {
+          console.log("smailIcon img not found");
+        } else {
+          console.log("smailIcon img found");
+        }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        var sendMessage = await py.findAndClick(
+          `${IMG}sendMessageTest.png`,
+          null,
+          5
+        );
+        if (!sendMessage) {
+          console.log("sendMessage img not found");
+        } else {
+          console.log("sendMessage img found");
+          return;
+        }
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
