@@ -250,73 +250,60 @@ try {
           });
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        exec(
-          `${ADB} -s emulator-5164 shell am start  -n com.whatsapp/.profile.ProfileInfoActivity`
-        );
-        console.log("ProfileInfoActivity test >>>>>>>>>>>>>>>>>>>>>>>>");
-        const py = new Python();
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        // var result = exec(
-        //     `${ADB} -s emulator-5164 exec-out uiautomator dump `
-        //   );
-        //   await new Promise((resolve, reject) => {
-        //     result.stderr.on("error", (err) => {
-        //       console.log(
-        //         `\n \nError in dumpScreenToFile() class ActivationScript : ${err} \n *Promise Rejected*\n \n`
-        //       );
-        //       reject();
-        //     });
-        //     result.on("close", (code) => {
-        //       console.log(`\ndumpScreenToFile() close with code:${code}`);
-        //       resolve();
-        //     });
-        //   });
-        var editAbout = await py.findAndClick(
-          `${IMG}aboutStatusTest.png`,
-          null,
-          5
-        );
-        if (!editAbout) {
-          console.log("editAbout img not found");
-        } else {
-          console.log("editAbout img found");
-        }
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
-        var editStatus = await py.findAndClick(
-          `${IMG}editStatusTest.png`,
-          null,
-          5
-        );
-        if (!editStatus) {
-          console.log("editStatus img not found");
-        } else {
-          console.log("editStatus img found");
-        }
-        var text = "Hii All";
-        var result = exec(`pythonScripts/writeText.py ${text}`);
-        await new Promise((resolve, reject) => {
-          result.stderr.on("data", (err) => {
-            console.log("python writeText -> error while typing : ", err);
+          var newChat = await py.findAndClick(
+            `${IMG}newChatTest.png`,
+            null,
+            5
+          );
+          if (!newChat) {
+            console.log("newChat img not found");
+          } else {
+            console.log("newChat img found");
+          }
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          var messageYourself = await py.findAndClick(
+            `${IMG}messageYourselfTest.png`,
+            null,
+            5
+          );
+          if (!messageYourself) {
+            console.log("messageYourself img not found");
+          } else {
+            console.log("messageYourself img found");
+          }
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          var messageBox = await py.findAndClick(
+            `${IMG}messageBoxTest.png`,
+            null,
+            5
+          );
+          if (!messageBox) {
+            console.log("messageBox img not found");
+          } else {
+            console.log("messageBox img found");
+          }
+          var text = "Hii";
+          var result = exec(`pythonScripts/writeText.py ${text}`);
+          await new Promise((resolve, reject) => {
+            result.stderr.on("data", (err) => {
+              console.log("python writeText -> error while typing : ", err);
+            });
+            result.on("close", (code) => {
+              console.log("python writeText -> exited with code : ", code);
+            
+              resolve();
+            });
           });
-          result.on("close", (code) => {
-            console.log("python writeText -> exited with code : ", code);
-          
-            resolve();
-          });
-        });
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
-        var saveStatus = await py.findAndClick(
-          `${IMG}saveEditAboutTest.png`,
-          null,
-          5
-        );
-        if (!saveStatus) {
-          console.log("saveStatus img not found");
-        } else {
-          console.log("saveStatus img found");
-        }
+          var sendMessage = await py.findAndClick(
+            `${IMG}sendMessageTest.png`,
+            null,
+            5
+          );
+          if (!sendMessage) {
+            console.log("sendMessage img not found");
+          } else {
+            console.log("sendMessage img found");
+          }
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
