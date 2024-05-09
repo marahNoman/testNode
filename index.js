@@ -366,7 +366,6 @@ try {
           console.log("deleteMessTest img not found");
         } else {
           console.log("deleteMessTest img found");
-          return;
         }
 
         var DeleteForEveryoneTest = await py.findAndClick(
@@ -378,7 +377,7 @@ try {
           console.log("DeleteForEveryoneTest img not found");
         } else {
           console.log("DeleteForEveryoneTest img found");
-          return;
+          
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
@@ -391,7 +390,7 @@ try {
           console.log("okDeleteMessTest img not found");
         } else {
           console.log("okDeleteMessTest img found");
-          return;
+
         }
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
