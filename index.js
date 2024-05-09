@@ -288,6 +288,18 @@ try {
             console.log("editStatus img found");
 
         }
+        var text ="Hii All"
+        var result = exec(`pythonScripts/writeText.py ${text}`);
+            await new Promise((resolve, reject)=>{
+                result.stderr.on('data',(err)=>{
+                    console.log("python writeText -> error while typing : ",err);
+                })
+                result.on('close',(code)=>{
+                    console.log("python writeText -> exited with code : ",code);
+                    written =true;
+                    resolve();
+                });
+            });
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
