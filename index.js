@@ -309,6 +309,9 @@ try {
           console.log("emojiIcon img found");
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
+        var minClicks = 1; // Minimum number of clicks
+        var maxClicks = 10; // Maximum number of clicks
+
         var numberOfClicks =
           Math.floor(Math.random() * (maxClicks - minClicks + 1)) + minClicks;
 
@@ -323,6 +326,11 @@ try {
         } else {
           console.log("smailIcon img found");
         }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        exec(
+            `${ADB} -s emulator-5164 shell input keyevent KEYCODE_BACK`
+          );
+        
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
         var sendMessage = await py.findAndClick(
