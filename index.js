@@ -382,7 +382,7 @@ try {
           console.log("okDeleteMessTest img found");
         }
         await py.click(514, 1400);
-        exec(`${ADB} -s emulator-5164 shell input swipe 700 700 700 700 2000`);
+        exec(`${ADB} -s emulator-5164 shell input swipe 1000 1000 1000 1000 2000`);
         await new Promise((resolve) => setTimeout(resolve, 1500));
         var forwordMessTest = await py.findAndClick(
           `${IMG}forwordMessTest.png`,
