@@ -395,6 +395,23 @@ try {
           console.log("okDeleteMessTest img found");
 
         }
+        await py.click(514, 1400);
+        exec(
+            `${ADB} -s emulator-5164 shell input swipe 700 700 700 700 2000`
+          );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          var forwordMessTest = await py.findAndClick(
+            `${IMG}forwordMessTest.png`,
+            null,
+            5
+          );
+          if (!forwordMessTest) {
+            console.log("forwordMessTest img not found");
+            return;
+          } else {
+            console.log("forwordMessTest img found");
+  
+          }
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
