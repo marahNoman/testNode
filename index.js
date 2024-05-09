@@ -279,7 +279,7 @@ try {
         } else {
           console.log("messageBox img found");
         }
-        var text = "Hii";
+        var text = "Hello";
         var result = exec(`pythonScripts/writeText.py ${text}`);
         await new Promise((resolve, reject) => {
           result.stderr.on("data", (err) => {
@@ -315,16 +315,20 @@ try {
         var numberOfClicks =
           Math.floor(Math.random() * (maxClicks - minClicks + 1)) + minClicks;
 
-        var smailIcon = await py.findAndClick(
-          `${IMG}smailIcon.png`,
-          null,
-          numberOfClicks
-        );
+       
+        for(var i = 0 ; i < numberOfClicks ; i++){
+            var smailIcon = await py.findAndClick(
+                `${IMG}smailIcon.png`,
+                null,
+                5
+              );
+      
+              if (!smailIcon) {
+                console.log("smailIcon img not found");
+              } else {
+                console.log("smailIcon img found");
+              }
 
-        if (!smailIcon) {
-          console.log("smailIcon img not found");
-        } else {
-          console.log("smailIcon img found");
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
         exec(
