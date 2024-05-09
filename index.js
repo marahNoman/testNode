@@ -400,7 +400,7 @@ try {
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
         var sendForwardMessTest = await py.findAndClick(
-          `${IMG}sendForwardMessTest.png`,
+          `${IMG}sendMessageTest.png`,
           null,
           5
         );
