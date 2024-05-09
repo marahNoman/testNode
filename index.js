@@ -225,6 +225,14 @@ try {
     script.CheckIfActivated().then(async (activated) => {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
+       
+
+      
+
+        return;
+        //TODO update saby data to activated false and activationStatus Not Active
+      } else {
+        console.log("saby activated");
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
         console.log(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
         var stop =  exec(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
@@ -270,14 +278,6 @@ try {
             console.log("editStatus img found");
 
         }
-
-      
-
-        return;
-        //TODO update saby data to activated false and activationStatus Not Active
-      } else {
-        console.log("saby activated");
-
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
