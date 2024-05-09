@@ -279,7 +279,7 @@ try {
         } else {
           console.log("messageBox img found");
         }
-        var text = "Hello";
+        var text = "Welcome";
         var result = exec(`pythonScripts/writeText.py ${text}`);
         await new Promise((resolve, reject) => {
           result.stderr.on("data", (err) => {
