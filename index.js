@@ -348,9 +348,9 @@ try {
           console.log("sendMessage img found");
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
-
+        await py.click(514, 1400);
         exec(
-            `${ADB} -s emulator-5164 shell input keyevent 3 adb shell sleep 2`
+            `${ADB} -s emulator-5164 shell input keyevent --longpress 23`
           );
           await new Promise((resolve) => setTimeout(resolve, 1500));
 
@@ -364,6 +364,7 @@ try {
 
         if (!deleteMessTest) {
           console.log("deleteMessTest img not found");
+          return;
         } else {
           console.log("deleteMessTest img found");
         }
@@ -375,6 +376,7 @@ try {
         );
         if (!DeleteForEveryoneTest) {
           console.log("DeleteForEveryoneTest img not found");
+          return;
         } else {
           console.log("DeleteForEveryoneTest img found");
           
@@ -388,6 +390,7 @@ try {
         );
         if (!okDeleteMessTest) {
           console.log("okDeleteMessTest img not found");
+          return;
         } else {
           console.log("okDeleteMessTest img found");
 
