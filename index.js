@@ -308,7 +308,7 @@ try {
         } else {
           console.log("emojiIcon img found");
         }
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         var minClicks = 1; // Minimum number of clicks
         var maxClicks = 10; // Maximum number of clicks
 
@@ -346,7 +346,6 @@ try {
           console.log("sendMessage img not found");
         } else {
           console.log("sendMessage img found");
-          return;
         }
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
