@@ -348,6 +348,52 @@ try {
           console.log("sendMessage img found");
           return;
         }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        exec(
+            `${ADB} -s emulator-5164 shell input keyevent 3 adb shell sleep 2`
+          );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        var deleteMessTest = await py.findAndClick(
+          `${IMG}deleteMessTest.png`,
+          null,
+          5
+        );
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+       
+
+        if (!deleteMessTest) {
+          console.log("deleteMessTest img not found");
+        } else {
+          console.log("deleteMessTest img found");
+          return;
+        }
+
+        var DeleteForEveryoneTest = await py.findAndClick(
+          `${IMG}sendMessageTest.png`,
+          null,
+          5
+        );
+        if (!DeleteForEveryoneTest) {
+          console.log("DeleteForEveryoneTest img not found");
+        } else {
+          console.log("DeleteForEveryoneTest img found");
+          return;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        var okDeleteMessTest = await py.findAndClick(
+          `${IMG}okDeleteMessTest.png`,
+          null,
+          5
+        );
+        if (!okDeleteMessTest) {
+          console.log("okDeleteMessTest img not found");
+        } else {
+          console.log("okDeleteMessTest img found");
+          return;
+        }
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
