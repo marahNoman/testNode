@@ -367,7 +367,7 @@ try {
         } else {
           console.log("deleteMessTest img found");
         }
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
 
         var DeleteForEveryoneTest = await py.findAndClick(
           `${IMG}sendMessageTest.png`,
