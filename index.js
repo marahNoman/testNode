@@ -390,7 +390,6 @@ try {
         );
         if (!okDeleteMessTest) {
           console.log("okDeleteMessTest img not found");
-          return;
         } else {
           console.log("okDeleteMessTest img found");
 
