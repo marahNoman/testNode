@@ -370,7 +370,7 @@ try {
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
         var DeleteForEveryoneTest = await py.findAndClick(
-          `${IMG}sendMessageTest.png`,
+          `${IMG}DeleteForEveryoneTest.png`,
           null,
           5
         );
