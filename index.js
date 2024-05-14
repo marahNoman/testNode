@@ -293,6 +293,10 @@ try {
         var swipeUpRandom = exec(
           `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${swipeUpSpeed}`
         );
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+        console.log("delayTime", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+
         var swipeDownRandom = exec(
           `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${swipeUpSpeed}`
         );
