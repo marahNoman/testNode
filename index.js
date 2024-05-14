@@ -310,10 +310,10 @@ try {
 
         await new Promise((resolve) => setTimeout(resolve, 1500));
         var swipeUpRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${swipeUpSpeed}`
+          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y- swipeUpExtent} ${swipeUpSpeed}`
         );
         var swipeDownRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${swipeUpSpeed}`
+          `${ADB} -s emulator-5164 shell input swipe ${end_x} ${end_y - swipeUpExtent} ${start_x} ${start_y} ${swipeUpSpeed}`
         );
         await new Promise((resolve, reject) => {
           swipeUpRandom.on("close", (code) => {
