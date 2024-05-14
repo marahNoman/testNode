@@ -268,147 +268,147 @@ try {
         } else {
           console.log("messageYourself img found");
         }
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        var messageBox = await py.findAndClick(
-          `${IMG}messageBoxTest.png`,
-          null,
-          5
-        );
-        if (!messageBox) {
-          console.log("messageBox img not found");
-        } else {
-          console.log("messageBox img found");
-        }
-        var text = "Welcome";
-        var result = exec(`pythonScripts/writeText.py ${text}`);
-        await new Promise((resolve, reject) => {
-          result.stderr.on("data", (err) => {
-            console.log("python writeText -> error while typing : ", err);
-          });
-          result.on("close", (code) => {
-            console.log("python writeText -> exited with code : ", code);
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
+        // var messageBox = await py.findAndClick(
+        //   `${IMG}messageBoxTest.png`,
+        //   null,
+        //   5
+        // );
+        // if (!messageBox) {
+        //   console.log("messageBox img not found");
+        // } else {
+        //   console.log("messageBox img found");
+        // }
+        // var text = "Welcome";
+        // var result = exec(`pythonScripts/writeText.py ${text}`);
+        // await new Promise((resolve, reject) => {
+        //   result.stderr.on("data", (err) => {
+        //     console.log("python writeText -> error while typing : ", err);
+        //   });
+        //   result.on("close", (code) => {
+        //     console.log("python writeText -> exited with code : ", code);
 
-            resolve();
-          });
-        });
-        var sendMessage = await py.findAndClick(
-          `${IMG}sendMessageTest.png`,
-          null,
-          5
-        );
-        if (!sendMessage) {
-          console.log("sendMessage img not found");
-        } else {
-          console.log("sendMessage img found");
-        }
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        var emojiIcon = await py.findAndClick(`${IMG}emojiIcon.png`, null, 5);
-        if (!emojiIcon) {
-          console.log("emojiIcon img not found");
-        } else {
-          console.log("emojiIcon img found");
-        }
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        var minClicks = 1; // Minimum number of clicks
-        var maxClicks = 10; // Maximum number of clicks
+        //     resolve();
+        //   });
+        // });
+        // var sendMessage = await py.findAndClick(
+        //   `${IMG}sendMessageTest.png`,
+        //   null,
+        //   5
+        // );
+        // if (!sendMessage) {
+        //   console.log("sendMessage img not found");
+        // } else {
+        //   console.log("sendMessage img found");
+        // }
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
+        // var emojiIcon = await py.findAndClick(`${IMG}emojiIcon.png`, null, 5);
+        // if (!emojiIcon) {
+        //   console.log("emojiIcon img not found");
+        // } else {
+        //   console.log("emojiIcon img found");
+        // }
+        // await new Promise((resolve) => setTimeout(resolve, 2000));
+        // var minClicks = 1; // Minimum number of clicks
+        // var maxClicks = 10; // Maximum number of clicks
 
-        var numberOfClicks =
-          Math.floor(Math.random() * (maxClicks - minClicks + 1)) + minClicks;
+        // var numberOfClicks =
+        //   Math.floor(Math.random() * (maxClicks - minClicks + 1)) + minClicks;
 
-        for (var i = 0; i < numberOfClicks; i++) {
-          var smailIcon = await py.findAndClick(`${IMG}smailIcon.png`, null, 5);
+        // for (var i = 0; i < numberOfClicks; i++) {
+        //   var smailIcon = await py.findAndClick(`${IMG}smailIcon.png`, null, 5);
 
-          if (!smailIcon) {
-            console.log("smailIcon img not found");
-          } else {
-            console.log("smailIcon img found");
-          }
-        }
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_BACK`);
+        //   if (!smailIcon) {
+        //     console.log("smailIcon img not found");
+        //   } else {
+        //     console.log("smailIcon img found");
+        //   }
+        // }
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
+        // exec(`${ADB} -s emulator-5164 shell input keyevent KEYCODE_BACK`);
 
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
 
-        var sendMessage = await py.findAndClick(
-          `${IMG}sendMessageTest.png`,
-          null,
-          5
-        );
-        if (!sendMessage) {
-          console.log("sendMessage img not found");
-        } else {
-          console.log("sendMessage img found");
-        }
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        await py.click(514, 1400);
-        exec(`${ADB} -s emulator-5164 shell input swipe 500 500 500 500 2000`);
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        // var sendMessage = await py.findAndClick(
+        //   `${IMG}sendMessageTest.png`,
+        //   null,
+        //   5
+        // );
+        // if (!sendMessage) {
+        //   console.log("sendMessage img not found");
+        // } else {
+        //   console.log("sendMessage img found");
+        // }
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
+        // await py.click(514, 1400);
+        // exec(`${ADB} -s emulator-5164 shell input swipe 500 500 500 500 2000`);
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
 
-        var deleteMessTest = await py.findAndClick(
-          `${IMG}deleteMessTest.png`,
-          null,
-          5
-        );
+        // var deleteMessTest = await py.findAndClick(
+        //   `${IMG}deleteMessTest.png`,
+        //   null,
+        //   5
+        // );
 
-        if (!deleteMessTest) {
-          console.log("deleteMessTest img not found");
-          return;
-        } else {
-          console.log("deleteMessTest img found");
-        }
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        // if (!deleteMessTest) {
+        //   console.log("deleteMessTest img not found");
+        //   return;
+        // } else {
+        //   console.log("deleteMessTest img found");
+        // }
+        // await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        var DeleteForEveryoneTest = await py.findAndClick(
-          `${IMG}DeleteForEveryoneTest.png`,
-          null,
-          5
-        );
-        if (!DeleteForEveryoneTest) {
-          console.log("DeleteForEveryoneTest img not found");
-          return;
-        } else {
-          console.log("DeleteForEveryoneTest img found");
-        }
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        // var DeleteForEveryoneTest = await py.findAndClick(
+        //   `${IMG}DeleteForEveryoneTest.png`,
+        //   null,
+        //   5
+        // );
+        // if (!DeleteForEveryoneTest) {
+        //   console.log("DeleteForEveryoneTest img not found");
+        //   return;
+        // } else {
+        //   console.log("DeleteForEveryoneTest img found");
+        // }
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
 
-        var okDeleteMessTest = await py.findAndClick(
-          `${IMG}okDeleteMessTest.png`,
-          null,
-          5
-        );
-        if (!okDeleteMessTest) {
-          console.log("okDeleteMessTest img not found");
-        } else {
-          console.log("okDeleteMessTest img found");
-        }
-        await py.click(514, 1400);
-        exec(`${ADB} -s emulator-5164 shell input swipe 1000 1000 1000 1000 2000`);
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        var forwordMessTest = await py.findAndClick(
-          `${IMG}forwordMessTest.png`,
-          null,
-          5
-        );
-        if (!forwordMessTest) {
-          console.log("forwordMessTest img not found");
-          return;
-        } else {
-          console.log("forwordMessTest img found");
-        }
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        exec(`${ADB} -s emulator-5164 shell input swipe 1000 1000 1000 1000 2000`);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        // var okDeleteMessTest = await py.findAndClick(
+        //   `${IMG}okDeleteMessTest.png`,
+        //   null,
+        //   5
+        // );
+        // if (!okDeleteMessTest) {
+        //   console.log("okDeleteMessTest img not found");
+        // } else {
+        //   console.log("okDeleteMessTest img found");
+        // }
+        // await py.click(514, 1400);
+        // exec(`${ADB} -s emulator-5164 shell input swipe 1000 1000 1000 1000 2000`);
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
+        // var forwordMessTest = await py.findAndClick(
+        //   `${IMG}forwordMessTest.png`,
+        //   null,
+        //   5
+        // );
+        // if (!forwordMessTest) {
+        //   console.log("forwordMessTest img not found");
+        //   return;
+        // } else {
+        //   console.log("forwordMessTest img found");
+        // }
+        // await new Promise((resolve) => setTimeout(resolve, 1500));
+        // exec(`${ADB} -s emulator-5164 shell input swipe 1000 1000 1000 1000 2000`);
+        // await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        var sendForwardMessTest = await py.findAndClick(
-          `${IMG}sendMessageTest.png`,
-          null,
-          5
-        );
-        if (!sendForwardMessTest) {
-          console.log("sendForwardMessTest img not found");
-        } else {
-          console.log("sendForwardMessTest img found");
-        }
+        // var sendForwardMessTest = await py.findAndClick(
+        //   `${IMG}sendMessageTest.png`,
+        //   null,
+        //   5
+        // );
+        // if (!sendForwardMessTest) {
+        //   console.log("sendForwardMessTest img not found");
+        // } else {
+        //   console.log("sendForwardMessTest img found");
+        // }
         // //check if saby not register in active side
         // let FindByUsername=await new SabyInfoRepository().FindByUsername();
         // if(FindByUsername.activated){
