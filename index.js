@@ -268,13 +268,37 @@ try {
         } else {
           console.log("messageYourself img found");
         }
-        
+
         const screenSize = {
-          width: os.platform() === 'win32' ? os.userInfo().screenWidth : process.stdout.columns,
-          height: os.platform() === 'win32' ? os.userInfo().screenHeight : process.stdout.rows
+          width:
+            os.platform() === "win32"
+              ? os.userInfo().screenWidth
+              : process.stdout.columns,
+          height:
+            os.platform() === "win32"
+              ? os.userInfo().screenHeight
+              : process.stdout.rows,
         };
-        console.log('Screen size:', screenSize);
-              // try {
+        console.log("Screen size:", screenSize);
+        const minSwipeExtent = screenSize.height / 2;
+        const maxSwipeExtent = screenSize.height;
+        const minSwipeSpeed = 100;
+        const maxSwipeSpeed = 300;
+        const swipeUpExtent = randomInRange(minSwipeExtent, maxSwipeExtent);
+        const swipeUpSpeed = randomInRange(minSwipeSpeed, maxSwipeSpeed);
+        
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var swipeRandom = exec(
+          `${ADB} -s emulator-5164 shell input swipe ${screenHeight.width / 2} ${screenHeight.height - 1} ${
+            screenHeight.width / 2
+          } ${screenHeight.height - swipeUpExtent} ${swipeUpSpeed}`
+        );
+        await new Promise((resolve, reject) => {
+          swipeRandom.on("close", (code) => {
+            resolve();
+          });
+        });
+        // try {
         //   const screenHeight = 0;
         //   try {
         //     exec(`${ADB} shell wm size`);
