@@ -272,12 +272,11 @@ try {
         try {
           const screenHeight = 0;
           try {
-            var stdout = exec(
-              `${ADB} -s emulator-5164 shell wm size`
-            );
+            exec(`${ADB} shell wm size`);
+            console.log(`${ADB} shell wm size`);
             await new Promise((resolve) => setTimeout(resolve, 2000));
 
-            // const { stdout } = await exec("adb shell wm size");
+            const { stdout } = await exec(`${ADB} shell wm size`);
             console.log('Output of ADB command:', stdout);
             const match = stdout.match(/\d+/g);
             if (match && match.length === 2) {
