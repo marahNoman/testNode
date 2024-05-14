@@ -291,7 +291,7 @@ try {
         var swipeUpExtent =
           Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
           minSwipeExtent;
-        var maxSwipeSpeed =
+        var swipeUpSpeed =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
           minSwipeSpeed;
         console.log("minSwipeExtent:", minSwipeExtent);
