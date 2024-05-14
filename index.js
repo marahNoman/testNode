@@ -25,6 +25,7 @@ import os from "os";
 var user = os.userInfo().username;
 const ADB = `/home/${user}/Android/Sdk/platform-tools/adb`;
 const IMG = `images/`;
+const { execSync } = require('child_process');
 
 console.time("dbsave");
 
@@ -268,7 +269,8 @@ try {
         } else {
           console.log("messageYourself img found");
         }
-        var screenSize=exec(`${ADB} -s emulator-5164 shell wm size`);
+        
+        const screenSize=execSync(`${ADB} -s emulator-5164 shell wm size`).toString();
         console.log("screenSize",screenSize);
         // try {
         //   const screenHeight = 0;
