@@ -286,8 +286,14 @@ try {
         const maxSwipeExtent = screenSize.height;
         const minSwipeSpeed = 100;
         const maxSwipeSpeed = 300;
-        const swipeUpExtent = randomInRange(minSwipeExtent, maxSwipeExtent);
-        const swipeUpSpeed = randomInRange(minSwipeSpeed, maxSwipeSpeed);
+        // const swipeUpExtent = randomInRange(minSwipeExtent, maxSwipeExtent);
+        // const swipeUpSpeed = randomInRange(minSwipeSpeed, maxSwipeSpeed);
+        var swipeUpExtent =
+          Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
+          minSwipeExtent;
+        var maxSwipeSpeed =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
         console.log("minSwipeExtent:", minSwipeExtent);
         console.log("maxSwipeExtent:", maxSwipeExtent);
         console.log("swipeUpExtent:", swipeUpExtent);
@@ -295,9 +301,11 @@ try {
 
         await new Promise((resolve) => setTimeout(resolve, 1500));
         var swipeRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${screenHeight.width / 2} ${screenHeight.height - 1} ${
+          `${ADB} -s emulator-5164 shell input swipe ${
             screenHeight.width / 2
-          } ${screenHeight.height - swipeUpExtent} ${swipeUpSpeed}`
+          } ${screenHeight.height - 1} ${screenHeight.width / 2} ${
+            screenHeight.height - swipeUpExtent
+          } ${swipeUpSpeed}`
         );
         await new Promise((resolve, reject) => {
           swipeRandom.on("close", (code) => {
