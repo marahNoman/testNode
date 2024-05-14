@@ -320,11 +320,17 @@ try {
             resolve();
           });
         });
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+        console.log("delayTime", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+
         await new Promise((resolve, reject) => {
           swipeDownRandom.on("close", (code) => {
             resolve();
           });
         });
+        console.log("Finishhhh");
+
         // try {
         //   const screenHeight = 0;
         //   try {
