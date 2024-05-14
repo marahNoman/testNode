@@ -279,7 +279,8 @@ try {
         console.log("maxSwipeExtent:", maxSwipeExtent);
         console.log("swipeUpExtent:", swipeUpExtent);
         console.log("swipeUpSpeed:", swipeUpSpeed);
-        var delayTime = Math.floor(Math.random() * (10 - 2 + 1)) + 10;
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+
         console.log("delayTime", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
         var swipeRandom = exec(
