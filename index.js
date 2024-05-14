@@ -268,7 +268,7 @@ try {
         } else {
           console.log("messageYourself img found");
         }
-        var screenSize=exec(`${ADB} shell wm size`);
+        var screenSize=exec(`${ADB} -s emulator-5164 shell wm size`);
         console.log("screenSize",screenSize);
         // try {
         //   const screenHeight = 0;
