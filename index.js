@@ -301,31 +301,73 @@ try {
             resolve();
           });
         });
-        
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
-        console.log("delayTime", delayTime);
-        await new Promise((resolve) => setTimeout(resolve, delayTime));
-        
-        var swipeDownExtent =
-          Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
-          minSwipeExtent;
-        var swipeDownSpeed =
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        await py.click(514, 1400);
+        var swipeUpSpeed =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
           minSwipeSpeed;
-        
-        var swipeDownRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe  ${end_x} ${
-            end_y - swipeDownExtent
-          } ${start_x} ${start_y} ${parseInt(swipeDownSpeed)}`
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+        console.log("delayTime", delayTime);
+        console.log("swipeUpSpeed", swipeUpSpeed);
+
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        var swipeUpRandom = exec(
+          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
+            end_y - swipeUpExtent
+          } ${parseInt(swipeUpSpeed)}`
         );
-        
         await new Promise((resolve, reject) => {
-          swipeDownRandom.on("close", (code) => {
+          swipeUpRandom.on("close", (code) => {
             resolve();
           });
         });
-        
+        var scrollDownChat = await py.findAndClick(
+          `${IMG}scrollDownChat.png`,
+          null,
+          5
+        );
+        if (!scrollDownChat) {
+          console.log("scrollDownChat img not found");
+        } else {
+          console.log("scrollDownChat img found");
+        }
+          var messageBox = await py.findAndClick(
+          `${IMG}messageBoxTest.png`,
+          null,
+          5
+        );
+        var delayTime = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
+        console.log("delayTime", delayTime);
 
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+
+        if (!messageBox) {
+          console.log("messageBox img not found");
+        } else {
+          console.log("messageBox img found");
+        }
+        var text = "Welcome";
+        var result = exec(`pythonScripts/writeText.py ${text}`);
+        await new Promise((resolve, reject) => {
+          result.stderr.on("data", (err) => {
+            console.log("python writeText -> error while typing : ", err);
+          });
+          result.on("close", (code) => {
+            console.log("python writeText -> exited with code : ", code);
+
+            resolve();
+          });
+        });
+        var sendMessage = await py.findAndClick(
+            `${IMG}sendMessageTest.png`,
+            null,
+            5
+          );
+          if (!sendMessage) {
+            console.log("sendMessage img not found");
+          } else {
+            console.log("sendMessage img found");
+          }
         // await new Promise((resolve) => setTimeout(resolve, 1500));
         // var swipeUpRandom = exec(
         //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y- swipeUpExtent} ${swipeUpSpeed}`
