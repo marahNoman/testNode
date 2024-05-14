@@ -273,6 +273,7 @@ try {
           const screenHeight = 0;
           try {
             const { stdout } = await exec("adb shell wm size");
+            console.log('Output of ADB command:', stdout);
             const match = stdout.match(/\d+/g);
             if (match && match.length === 2) {
               screenHeight = {
