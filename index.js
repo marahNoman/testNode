@@ -303,12 +303,15 @@ try {
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
         await py.click(514, 1400);
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+        console.log("delayTime", delayTime);
+
         var swipeUpSpeed =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
           minSwipeSpeed;
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
-        console.log("delayTime", delayTime);
-        console.log("swipeUpSpeed", swipeUpSpeed);
+        console.log("delayTimeChat", delayTime);
+        console.log("swipeUpSpeedChat", swipeUpSpeed);
 
         await new Promise((resolve) => setTimeout(resolve, delayTime));
         var swipeUpRandom = exec(
