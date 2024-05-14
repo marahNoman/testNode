@@ -269,9 +269,12 @@ try {
           console.log("messageYourself img found");
         }
         
-        const screenSize=exec(`${ADB} -s emulator-5164 shell wm size`);
-        console.log("screenSize",screenSize);
-        // try {
+        const screenSize = {
+          width: os.platform() === 'win32' ? os.userInfo().screenWidth : process.stdout.columns,
+          height: os.platform() === 'win32' ? os.userInfo().screenHeight : process.stdout.rows
+        };
+        console.log('Screen size:', screenSize);
+              // try {
         //   const screenHeight = 0;
         //   try {
         //     exec(`${ADB} shell wm size`);
