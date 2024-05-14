@@ -250,15 +250,19 @@ try {
             resolve();
           });
         });
+        // const screenSize = {
+        //   width:
+        //     os.platform() === "win32"
+        //       ? os.userInfo().screenWidth
+        //       : process.stdout.columns,
+        //   height:
+        //     os.platform() === "win32"
+        //       ? os.userInfo().screenHeight
+        //       : process.stdout.rows,
+        // };
         const screenSize = {
-          width:
-            os.platform() === "win32"
-              ? os.userInfo().screenWidth
-              : process.stdout.columns,
-          height:
-            os.platform() === "win32"
-              ? os.userInfo().screenHeight
-              : process.stdout.rows,
+          width: 414,
+          height: 727
         };
         console.log("Screen size:", screenSize);
         console.log("Screen size width:", screenSize.width);
