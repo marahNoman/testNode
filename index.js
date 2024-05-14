@@ -302,9 +302,9 @@ try {
         await new Promise((resolve) => setTimeout(resolve, 1500));
         var swipeRandom = exec(
           `${ADB} -s emulator-5164 shell input swipe ${
-            screenHeight.width / 2
-          } ${screenHeight.height - 1} ${screenHeight.width / 2} ${
-            screenHeight.height - swipeUpExtent
+            screenSize.width / 2
+          } ${screenSize.height - 1} ${screenSize.width / 2} ${
+            screenSize.height - swipeUpExtent
           } ${swipeUpSpeed}`
         );
         await new Promise((resolve, reject) => {
