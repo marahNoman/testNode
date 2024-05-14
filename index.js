@@ -268,33 +268,55 @@ try {
         } else {
           console.log("messageYourself img found");
         }
+
         try {
-          const screenHeight = await ADB.getScreenSize();
-          
-          // Define the range for swipe extent and speed
-          const minSwipeExtent = screenHeight.height / 2; // Half screen height
+          const screenHeight = 0;
+          try {
+            const { stdout } = await exec("adb shell wm size");
+            const match = stdout.match(/\d+/g);
+            if (match && match.length === 2) {
+              screenHeight = {
+                width: parseInt(match[0]),
+                height: parseInt(match[1]),
+              };
+            } else {
+              throw new Error("Failed to get screen size");
+            }
+          } catch (err) {
+            console.error("Error:", err);
+            throw err;
+          }
+          console.log("*************screenHeight********************",screenHeight);
+          const minSwipeExtent = screenHeight.height / 2;
           const maxSwipeExtent = screenHeight.height;
-          const minSwipeSpeed = 200; // Minimum swipe speed in milliseconds
-          const maxSwipeSpeed = 600; // Maximum swipe speed in milliseconds
-          
+          const minSwipeSpeed = 100;
+          const maxSwipeSpeed = 300;
+
           // Swipe up
           const swipeUpExtent = randomInRange(minSwipeExtent, maxSwipeExtent);
           const swipeUpSpeed = randomInRange(minSwipeSpeed, maxSwipeSpeed);
-          await ADB.shell(`input swipe ${screenHeight.width / 2} ${screenHeight.height - 1} ${screenHeight.width / 2} ${screenHeight.height - swipeUpExtent} ${swipeUpSpeed}`);
-      
-          // Wait for a moment before swiping down
-          await new Promise(resolve => setTimeout(resolve, 1000));
-      
+          await ADB.shell(
+            `input swipe ${screenHeight.width / 2} ${screenHeight.height - 1} ${
+              screenHeight.width / 2
+            } ${screenHeight.height - swipeUpExtent} ${swipeUpSpeed}`
+          );
+
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+
           // Swipe down
           const swipeDownExtent = randomInRange(minSwipeExtent, maxSwipeExtent);
           const swipeDownSpeed = randomInRange(minSwipeSpeed, maxSwipeSpeed);
-          await ADB.shell(`input swipe ${screenHeight.width / 2} ${swipeUpExtent} ${screenHeight.width / 2} ${screenHeight.height - 1} ${swipeDownSpeed}`);
-      
-          console.log('Swipe up and down completed.');
+          await ADB.shell(
+            `input swipe ${screenHeight.width / 2} ${swipeUpExtent} ${
+              screenHeight.width / 2
+            } ${screenHeight.height - 1} ${swipeDownSpeed}`
+          );
+
+          console.log("Swipe up and down completed.");
         } catch (err) {
-          console.error('Error:', err);
+          console.error("Error:", err);
         }
-      
+
         // await new Promise((resolve) => setTimeout(resolve, 1500));
         // var messageBox = await py.findAndClick(
         //   `${IMG}messageBoxTest.png`,
