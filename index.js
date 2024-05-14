@@ -226,48 +226,7 @@ try {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
 
-        const py = new Python();
-        console.log("saby activated");
-        console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
-        console.log(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
-        var stop = exec(
-          `${ADB} -s emulator-5164 shell am force-stop com.whatsapp`
-        );
-        await new Promise((resolve, reject) => {
-          stop.on("close", (code) => {
-            resolve();
-          });
-        });
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        var startApp = exec(
-          `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
-        );
-        await new Promise((resolve, reject) => {
-          startApp.on("close", (code) => {
-            resolve();
-          });
-        });
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        var newChat = await py.findAndClick(`${IMG}newChatTest.png`, null, 5);
-        if (!newChat) {
-          console.log("newChat img not found");
-        } else {
-          console.log("newChat img found");
-        }
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        var messageYourself = await py.findAndClick(
-          `${IMG}messageYourselfTest.png`,
-          null,
-          5
-        );
-        if (!messageYourself) {
-          console.log("messageYourself img not found");
-        } else {
-          console.log("messageYourself img found");
-        }
-        
-        const screenSize=exec(`${ADB} -s emulator-5164 shell wm size`).toString();
-        console.log("screenSize",screenSize);
+        return;
         //TODO update saby data to activated false and activationStatus Not Active
       } else {
         const py = new Python();
@@ -310,7 +269,7 @@ try {
           console.log("messageYourself img found");
         }
         
-        const screenSize=exec(`${ADB} -s emulator-5164 shell wm size`).toString();
+        const screenSize=exec(`${ADB} shell wm size`);
         console.log("screenSize",screenSize);
         // try {
         //   const screenHeight = 0;
