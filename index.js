@@ -250,24 +250,21 @@ try {
             resolve();
           });
         });
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        var newChat = await py.findAndClick(`${IMG}newChatTest.png`, null, 5);
-        if (!newChat) {
-          console.log("newChat img not found");
-        } else {
-          console.log("newChat img found");
-        }
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        var messageYourself = await py.findAndClick(
-          `${IMG}messageYourselfTest.png`,
-          null,
-          5
+        var delayTime = Math.floor(Math.random() * (10 - 2 + 1)) + 10;
+        console.log("delayTime", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        var swipeRandom = exec(
+          `${ADB} -s emulator-5164 shell input swipe ${screenSize.width / 2} ${
+            screenSize.height - 1
+          } ${screenSize.width / 2} ${
+            screenSize.height - swipeUpExtent
+          } ${swipeUpSpeed}`
         );
-        if (!messageYourself) {
-          console.log("messageYourself img not found");
-        } else {
-          console.log("messageYourself img found");
-        }
+        await new Promise((resolve, reject) => {
+          swipeRandom.on("close", (code) => {
+            resolve();
+          });
+        });
 
         const screenSize = {
           width:
@@ -301,9 +298,9 @@ try {
 
         await new Promise((resolve) => setTimeout(resolve, 1500));
         var swipeRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${
-            screenSize.width / 2
-          } ${screenSize.height - 1} ${screenSize.width / 2} ${
+          `${ADB} -s emulator-5164 shell input swipe ${screenSize.width / 2} ${
+            screenSize.height - 1
+          } ${screenSize.width / 2} ${
             screenSize.height - swipeUpExtent
           } ${swipeUpSpeed}`
         );
