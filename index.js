@@ -282,7 +282,7 @@ try {
         console.log("minSwipeExtent:", minSwipeExtent);
         console.log("maxSwipeExtent:", maxSwipeExtent);
         console.log("swipeUpExtent:", swipeUpExtent);
-        console.log("swipeUpSpeed:", swipeUpSpeed);
+        console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
         var start_x=screenSize.width / 2;
         var start_y=screenSize.height - 200;
@@ -290,17 +290,17 @@ try {
         var end_y=200;
         console.log("delayTime", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
-        var swipeUpRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y- swipeUpExtent} ${swipeUpSpeed}`
-        );
-        await new Promise((resolve, reject) => {
-          swipeUpRandom.on("close", (code) => {
-            resolve();
-          });
-        });
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
-        console.log("delayTime", delayTime);
-        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        // var swipeUpRandom = exec(
+        //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y- swipeUpExtent} ${parseInt(swipeUpSpeed)}`
+        // );
+        // await new Promise((resolve, reject) => {
+        //   swipeUpRandom.on("close", (code) => {
+        //     resolve();
+        //   });
+        // });
+        // var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+        // console.log("delayTime", delayTime);
+        // await new Promise((resolve) => setTimeout(resolve, delayTime));
 
         var swipeDownRandom = exec(
           `${ADB} -s emulator-5164 shell input swipe  ${end_x} ${end_y- swipeUpExtent} ${start_x} ${start_y} ${swipeUpSpeed}`
