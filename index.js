@@ -310,34 +310,32 @@ try {
         console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
 
-        script.swipeRandom(
-          start_x,
-          start_y,
-          end_x,
-          end_y,
-          parseInt(swipeUpSpeed)
-        );
-        script.swipeRandom(
-          start_x,
-          start_y,
-          end_x,
-          end_y,
-          parseInt(swipeUpSpeed)
-        );
-        script.swipeRandom(
-          start_x,
-          start_y,
-          end_x,
-          end_y,
-          parseInt(swipeUpSpeed)
-        );
-        script.swipeRandom(
-          start_x,
-          end_y,
-          end_x,
-          start_y,
-          parseInt(swipeUpSpeed)
-        );
+        for (var i = 0; i < numberOfSwipeUp; i++) {
+          var swipeUpSpeed1 =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+          script.swipeRandom(
+            start_x,
+            start_y,
+            end_x,
+            end_y,
+            parseInt(swipeUpSpeed1)
+          );
+        } 
+        var numberOfSwipeDown =
+        Math.floor(Math.random() * 3) + 1;
+        for (var i = 0; i < numberOfSwipeDown; i++) {
+          var swipeDownSpeed1 =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+          script.swipeRandom(
+            start_x,
+            end_y,
+            end_x,
+            start_y,
+            parseInt(swipeDownSpeed1)
+          );
+        }
 
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
         console.log("delayFuncRandom", delayTime);
@@ -355,27 +353,37 @@ try {
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
         console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
-        script.swipeRandom(
-          start_x,
-          start_y,
-          end_x,
-          end_y,
-          parseInt(swipeUpSpeed)
-        );
-        script.swipeRandom(
-          start_x,
-          start_y,
-          end_x,
-          end_y,
-          parseInt(swipeUpSpeed)
-        );
-        script.swipeRandom(
-          start_x,
-          end_y,
-          end_x,
-          start_y,
-          parseInt(swipeUpSpeed)
-        );
+        var numberOfSwipeUp =
+        Math.floor(Math.random() * 3) + 1;
+
+        for (var i = 0; i < numberOfSwipeUp; i++) {
+          var swipeUpSpeed2 =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+          script.swipeRandom(
+            start_x,
+            start_y,
+            end_x,
+            end_y,
+            parseInt(swipeUpSpeed2)
+          );
+        } 
+        var numberOfSwipeDown =
+        Math.floor(Math.random() * 3) + 1;
+        for (var i = 0; i < numberOfSwipeDown; i++) {
+          var swipeDownSpeed2 =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+          script.swipeRandom(
+            start_x,
+            end_y,
+            end_x,
+            start_y,
+            parseInt(swipeDownSpeed2)
+          );
+        }
+       
+       
 
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
         console.log("delayFuncRandom", delayTime);

@@ -344,7 +344,6 @@ export class MainScript {
     var user = os.userInfo().username;
     const ADB = `/home/${user}/Android/Sdk/platform-tools/adb`;
 
-    console.log("swipeRandom start");
     var swipeUpRandom = exec(
       `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${swipeUpSpeed}`
     );
@@ -353,6 +352,6 @@ export class MainScript {
         resolve();
       });
     });
-    console.log("swipeRandom end");
+    console.log("swipeRandom done");
   }
 }
