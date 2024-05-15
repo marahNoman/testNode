@@ -304,8 +304,11 @@ try {
         await new Promise((resolve) => setTimeout(resolve, 1500));
         const click_x = screenSize.width / 2; // X coordinate for the click
         const click_y = screenSize.height / 2; // Y coordinate for the click
+        console.log("click_x",click_x);
+        console.log("click_y",click_y);
 
         await py.click(click_x, click_y);
+        console.log("clicked");
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
         console.log("delayTime", delayTime);
 
