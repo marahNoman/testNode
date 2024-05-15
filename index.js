@@ -374,19 +374,7 @@ try {
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
         console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
-        var scrollDownChat = await py.findAndClick(
-          `${IMG}scrollDownChat.png`,
-          null,
-          5
-        );
-        if (!scrollDownChat) {
-          console.log("scrollDownChat img not found");
-        } else {
-          console.log("scrollDownChat img found");
-        }
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
-        console.log("delayFuncRandom", delayTime);
-        await new Promise((resolve) => setTimeout(resolve, delayTime));
+      
         var messageBox = await py.findAndClick(
           `${IMG}messageBoxTest.png`,
           null,
