@@ -301,7 +301,11 @@ try {
           });
         });
         script.delayFuncRandom(2000,10000);
-        await py.click(514, 1400);
+        const click_x = screenSize.width / 2; // X coordinate for the click
+        const click_y = screenSize.height / 2; // Y coordinate for the click
+        console.log("click_x",click_x);
+        console.log("click_y",click_y);
+        await py.click(click_x, click_y);
         
         console.log("clicked");
         script.delayFuncRandom(2000,10000);
@@ -311,7 +315,7 @@ try {
           minSwipeSpeed;
           script.delayFuncRandom(2000,10000);
           console.log("swipeUpSpeedChat", swipeUpSpeed);
-          await py.click(514, 1400);
+
         var swipeUpRandom = exec(
           `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
             end_y - swipeUpExtent
