@@ -260,124 +260,139 @@ try {
         //       ? os.userInfo().screenHeight
         //       : process.stdout.rows,
         // };
-        const screenSize = {
-          width: 414,
-          height: 727,
-        };
+        // const screenSize = {
+        //   width: 414,
+        //   height: 727,
+        // };
+        let screenSizeWH ="";
+
+        const screenSize = exec(ADB + " -s emulator-5164 shell wm size");
+        await  new Promise((resolve,reject)=>{
+          screenSize.stderr.on('data',(error)=>{
+              console.log("error: ",error);
+              reject();
+          });
+          screenSize.stdout.on('data', (data) => {
+            screenSizeWH = data;
+            }); 
+            screenSize.on('close',(code)=>{
+              resolve();
+          });
+         });
         console.log("Screen size:", screenSize);
-        console.log("Screen size width:", screenSize.width);
-        console.log("Screen size height:", screenSize.height);
+        console.log("screenSizeWH:", screenSizeWH);
+        // console.log("Screen size height:", screenSize.height);
 
-        const minSwipeExtent = screenSize.height / 2;
-        const maxSwipeExtent = screenSize.height;
-        const minSwipeSpeed = 100;
-        const maxSwipeSpeed = 300;
+        // const minSwipeExtent = screenSize.height / 2;
+        // const maxSwipeExtent = screenSize.height;
+        // const minSwipeSpeed = 100;
+        // const maxSwipeSpeed = 300;
 
-        var swipeUpExtent =
-          Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
-          minSwipeExtent;
-        var swipeUpSpeed =
-          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
-          minSwipeSpeed;
-        console.log("minSwipeExtent:", minSwipeExtent);
-        console.log("maxSwipeExtent:", maxSwipeExtent);
-        console.log("swipeUpExtent:", swipeUpExtent);
-        console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
+        // var swipeUpExtent =
+        //   Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
+        //   minSwipeExtent;
+        // var swipeUpSpeed =
+        //   Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+        //   minSwipeSpeed;
+        // console.log("minSwipeExtent:", minSwipeExtent);
+        // console.log("maxSwipeExtent:", maxSwipeExtent);
+        // console.log("swipeUpExtent:", swipeUpExtent);
+        // console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
 
-        var start_x = screenSize.width / 2;
-        var start_y = screenSize.height - 200;
-        var end_x = screenSize.width / 2;
-        var end_y = 200;
-        script.delayFuncRandom(2000,10000);
+        // var start_x = screenSize.width / 2;
+        // var start_y = screenSize.height - 200;
+        // var end_x = screenSize.width / 2;
+        // var end_y = 200;
+        // script.delayFuncRandom(2000,10000);
 
-        var swipeUpRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
-            end_y - swipeUpExtent
-          } ${parseInt(swipeUpSpeed)}`
-        );
-        await new Promise((resolve, reject) => {
-          swipeUpRandom.on("close", (code) => {
-            resolve();
-          });
-        });
-        script.delayFuncRandom(2000,10000);
-        const click_x = screenSize.width / 2; // X coordinate for the click
-        const click_y = screenSize.height / 2; // Y coordinate for the click
-        console.log("click_x",click_x);
-        console.log("click_y",click_y);
-        await py.click(527, 905);
+        // var swipeUpRandom = exec(
+        //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
+        //     end_y - swipeUpExtent
+        //   } ${parseInt(swipeUpSpeed)}`
+        // );
+        // await new Promise((resolve, reject) => {
+        //   swipeUpRandom.on("close", (code) => {
+        //     resolve();
+        //   });
+        // });
+        // script.delayFuncRandom(2000,10000);
+        // const click_x = screenSize.width / 2; // X coordinate for the click
+        // const click_y = screenSize.height / 2; // Y coordinate for the click
+        // console.log("click_x",click_x);
+        // console.log("click_y",click_y);
+        // await py.click(527, 905);
         
-        console.log("clicked");
-        script.delayFuncRandom(2000,10000);
+        // console.log("clicked");
+        // script.delayFuncRandom(2000,10000);
 
-        var swipeUpSpeed =
-          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
-          minSwipeSpeed;
-          script.delayFuncRandom(2000,10000);
-          console.log("swipeUpSpeedChat", swipeUpSpeed);
+        // var swipeUpSpeed =
+        //   Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+        //   minSwipeSpeed;
+        //   script.delayFuncRandom(2000,10000);
+        //   console.log("swipeUpSpeedChat", swipeUpSpeed);
 
-        var swipeUpRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
-            end_y - swipeUpExtent
-          } ${parseInt(swipeUpSpeed)}`
-        );
-        await new Promise((resolve, reject) => {
-          swipeUpRandom.on("close", (code) => {
-            resolve();
-          });
-        });
-        var scrollDownChat = await py.findAndClick(
-          `${IMG}scrollDownChat.png`,
-          null,
-          5
-        );
-        if (!scrollDownChat) {
-          console.log("scrollDownChat img not found");
-          return;
-        } else {
-          console.log("scrollDownChat img found");
-        }
-        var messageBox = await py.findAndClick(
-          `${IMG}messageBoxTest.png`,
-          null,
-          5
-        );
-        var delayTime = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
-        console.log("delayTime", delayTime);
+        // var swipeUpRandom = exec(
+        //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
+        //     end_y - swipeUpExtent
+        //   } ${parseInt(swipeUpSpeed)}`
+        // );
+        // await new Promise((resolve, reject) => {
+        //   swipeUpRandom.on("close", (code) => {
+        //     resolve();
+        //   });
+        // });
+        // var scrollDownChat = await py.findAndClick(
+        //   `${IMG}scrollDownChat.png`,
+        //   null,
+        //   5
+        // );
+        // if (!scrollDownChat) {
+        //   console.log("scrollDownChat img not found");
+        //   return;
+        // } else {
+        //   console.log("scrollDownChat img found");
+        // }
+        // var messageBox = await py.findAndClick(
+        //   `${IMG}messageBoxTest.png`,
+        //   null,
+        //   5
+        // );
+        // var delayTime = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
+        // console.log("delayTime", delayTime);
 
-        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        // await new Promise((resolve) => setTimeout(resolve, delayTime));
 
-        if (!messageBox) {
-          console.log("messageBox img not found");
-          return;
+        // if (!messageBox) {
+        //   console.log("messageBox img not found");
+        //   return;
 
-        } else {
-          console.log("messageBox img found");
-        }
-        var text = "Welcome";
-        var result = exec(`pythonScripts/writeText.py ${text}`);
-        await new Promise((resolve, reject) => {
-          result.stderr.on("data", (err) => {
-            console.log("python writeText -> error while typing : ", err);
-          });
-          result.on("close", (code) => {
-            console.log("python writeText -> exited with code : ", code);
+        // } else {
+        //   console.log("messageBox img found");
+        // }
+        // var text = "Welcome";
+        // var result = exec(`pythonScripts/writeText.py ${text}`);
+        // await new Promise((resolve, reject) => {
+        //   result.stderr.on("data", (err) => {
+        //     console.log("python writeText -> error while typing : ", err);
+        //   });
+        //   result.on("close", (code) => {
+        //     console.log("python writeText -> exited with code : ", code);
 
-            resolve();
-          });
-        });
-        var sendMessage = await py.findAndClick(
-          `${IMG}sendMessageTest.png`,
-          null,
-          5
-        );
-        if (!sendMessage) {
-          console.log("sendMessage img not found");
-          return;
+        //     resolve();
+        //   });
+        // });
+        // var sendMessage = await py.findAndClick(
+        //   `${IMG}sendMessageTest.png`,
+        //   null,
+        //   5
+        // );
+        // if (!sendMessage) {
+        //   console.log("sendMessage img not found");
+        //   return;
 
-        } else {
-          console.log("sendMessage img found");
-        }
+        // } else {
+        //   console.log("sendMessage img found");
+        // }
         // await new Promise((resolve) => setTimeout(resolve, 1500));
         // var swipeUpRandom = exec(
         //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y- swipeUpExtent} ${swipeUpSpeed}`
