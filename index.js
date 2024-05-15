@@ -226,8 +226,88 @@ try {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
 
-        return;
-        //TODO update saby data to activated false and activationStatus Not Active
+        var stop = exec(
+          `${ADB} -s emulator-5164 shell am force-stop com.whatsapp`
+        );
+        await new Promise((resolve, reject) => {
+          stop.on("close", (code) => {
+            resolve();
+          });
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var startApp = exec(
+          `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
+        );
+        await new Promise((resolve, reject) => {
+          startApp.on("close", (code) => {
+            resolve();
+          });
+        });
+        console.log("Wait Random");
+        
+        script.delayFuncRandom(2000, 10000);
+        script.delayFuncRandom(2000, 10000);
+
+        let screenSizeWH = "";
+        var screenWidth = 0;
+        var screenHeight = 0;
+
+        try {
+          const screenSize = exec(ADB + " -s emulator-5164 shell wm size");
+          await new Promise((resolve, reject) => {
+            screenSize.stderr.on("data", (error) => {
+              console.log("error: ", error);
+              reject();
+            });
+            screenSize.stdout.on("data", (data) => {
+              screenSizeWH = data.trim();
+            });
+            screenSize.on("close", (code) => {
+              resolve();
+            });
+          });
+          const match = screenSizeWH.match(/\d+/g);
+          if (match && match.length === 2) {
+            screenWidth = parseInt(match[0]);
+            screenHeight = parseInt(match[1]);
+            console.log("Screen Width:", screenWidth);
+            console.log("Screen Height:", screenHeight);
+          } else {
+            throw new Error("Failed to get screen size");
+          }
+        } catch (err) {
+          console.error("Error:", err);
+          throw err;
+        }
+        const minSwipeExtent = screenHeight / 2;
+        const maxSwipeExtent = screenHeight;
+        const minSwipeSpeed = 100;
+        const maxSwipeSpeed = 300;
+
+        var swipeUpExtent =
+          Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
+          minSwipeExtent;
+        var swipeUpSpeed =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+        console.log("minSwipeExtent:", minSwipeExtent);
+        console.log("maxSwipeExtent:", maxSwipeExtent);
+        console.log("swipeUpExtent:", swipeUpExtent);
+        console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
+
+        var start_x = screenWidth / 2;
+        var start_y = screenHeight - 500;
+        var end_x = screenWidth / 2;
+        var end_y = 500;
+        
+        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
+        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
+        script.swipeRandom(start_x,end_y,end_x,start_y,parseInt(swipeUpSpeed));
+       
+        script.delayFuncRandom(2000, 10000);
+        script.delayFuncRandom(2000, 10000);
+
+        console.log("Finishhhh");        //TODO update saby data to activated false and activationStatus Not Active
       } else {
         console.log("saby activated");
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
