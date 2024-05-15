@@ -272,7 +272,6 @@ constructor(){
       return new Promise(resolve => setTimeout(resolve, delayTime));
     }
     async swipeRandom(start_x,start_y,end_x,end_y,swipeUpSpeed){
-      delayFuncRandom(2000, 10000);
       console.log("swipeRandom start")
       var swipeUpRandom = exec(
         `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${swipeUpSpeed}`
@@ -284,7 +283,6 @@ constructor(){
       });
       console.log("swipeRandom end")
 
-      delayFuncRandom(2000, 10000);
     }
    
     
