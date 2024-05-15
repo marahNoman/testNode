@@ -265,7 +265,8 @@ try {
         //   height: 727,
         // };
         let screenSizeWH = "";
-
+        const screenWidth=0;
+        const screenHeight=0;
         const screenSize = exec(ADB + " -s emulator-5164 shell wm size");
         await new Promise((resolve, reject) => {
           screenSize.stderr.on("data", (error) => {
@@ -282,8 +283,8 @@ try {
         console.log("screenSizeWH:", screenSizeWH);
         const match = screenSizeWH.match(/\d+/g);
         if (match && match.length === 2) {
-          const screenWidth = parseInt(match[0]);
-          const screenHeight = parseInt(match[1]);
+          screenWidth = parseInt(match[0]);
+          screenHeight = parseInt(match[1]);
           console.log("Screen Width:", screenWidth);
           console.log("Screen Height:", screenHeight);
         } else {
@@ -292,38 +293,46 @@ try {
         
         // console.log("Screen size height:", screenSize.height);
 
-        // const minSwipeExtent = screenSize.height / 2;
-        // const maxSwipeExtent = screenSize.height;
-        // const minSwipeSpeed = 100;
-        // const maxSwipeSpeed = 300;
+        const minSwipeExtent = screenHeight / 2;
+        const maxSwipeExtent = screenHeight;
+        const minSwipeSpeed = 100;
+        const maxSwipeSpeed = 300;
 
-        // var swipeUpExtent =
-        //   Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
-        //   minSwipeExtent;
-        // var swipeUpSpeed =
-        //   Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
-        //   minSwipeSpeed;
-        // console.log("minSwipeExtent:", minSwipeExtent);
-        // console.log("maxSwipeExtent:", maxSwipeExtent);
-        // console.log("swipeUpExtent:", swipeUpExtent);
-        // console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
+        var swipeUpExtent =
+          Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
+          minSwipeExtent;
+        var swipeUpSpeed =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+        console.log("minSwipeExtent:", minSwipeExtent);
+        console.log("maxSwipeExtent:", maxSwipeExtent);
+        console.log("swipeUpExtent:", swipeUpExtent);
+        console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
 
-        // var start_x = screenSize.width / 2;
-        // var start_y = screenSize.height - 200;
-        // var end_x = screenSize.width / 2;
-        // var end_y = 200;
-        // script.delayFuncRandom(2000,10000);
+        var start_x = screenWidth / 2;
+        var start_y = screenHeight - 200;
+        var end_x = screenWidth / 2;
+        var end_y = 200;
+        script.delayFuncRandom(2000,10000);
 
-        // var swipeUpRandom = exec(
-        //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
-        //     end_y - swipeUpExtent
-        //   } ${parseInt(swipeUpSpeed)}`
-        // );
-        // await new Promise((resolve, reject) => {
-        //   swipeUpRandom.on("close", (code) => {
-        //     resolve();
-        //   });
-        // });
+        var swipeUpRandom = exec(
+          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
+            end_y - swipeUpExtent
+          } ${parseInt(swipeUpSpeed)}`
+        );
+        await new Promise((resolve, reject) => {
+          swipeUpRandom.on("close", (code) => {
+            resolve();
+          });
+        });
+          var swipeDownRandom = exec(
+          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${end_y - swipeUpExtent} ${end_x} ${start_y} ${swipeUpSpeed}`
+        );
+        await new Promise((resolve, reject) => {
+          swipeUpRandom.on("close", (code) => {
+            resolve();
+          });
+        });
         // script.delayFuncRandom(2000,10000);
         // const click_x = screenSize.width / 2; // X coordinate for the click
         // const click_y = screenSize.height / 2; // Y coordinate for the click
