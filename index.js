@@ -265,8 +265,8 @@ try {
         //   height: 727,
         // };
         let screenSizeWH = "";
-        const screenWidth=0;
-        const screenHeight=0;
+        var screenWidth=0;
+        var screenHeight=0;
         const screenSize = exec(ADB + " -s emulator-5164 shell wm size");
         await new Promise((resolve, reject) => {
           screenSize.stderr.on("data", (error) => {
