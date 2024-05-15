@@ -323,17 +323,17 @@ try {
           minSwipeSpeed;
           script.delayFuncRandom(2000,10000);
           console.log("swipeUpSpeedChat", swipeUpSpeed);
-
-        var swipeUpRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
-            end_y - swipeUpExtent
-          } ${parseInt(swipeUpSpeed)}`
-        );
-        await new Promise((resolve, reject) => {
-          swipeUpRandom.on("close", (code) => {
-            resolve();
-          });
-        });
+          await py.click(514, 1400);
+        // var swipeUpRandom = exec(
+        //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
+        //     end_y - swipeUpExtent
+        //   } ${parseInt(swipeUpSpeed)}`
+        // );
+        // await new Promise((resolve, reject) => {
+        //   swipeUpRandom.on("close", (code) => {
+        //     resolve();
+        //   });
+        // });
         var scrollDownChat = await py.findAndClick(
           `${IMG}scrollDownChat.png`,
           null,
