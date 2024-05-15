@@ -314,17 +314,27 @@ try {
         var end_x = screenWidth / 2;
         var end_y = 200;
         script.delayFuncRandom(2000,10000);
-
-        var swipeUpRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
-            end_y - swipeUpExtent
-          } ${parseInt(swipeUpSpeed)}`
-        );
+        console.log("start_x & end_x :", start_x);
+        console.log("start_y:", start_y);
+        console.log("end_y:", end_y);
+        let swipeUpRandomData = "";
+        
+        const swipeUpRandom = exec(ADB + " -s emulator-5164 shell input swipe" + `${start_x} ${start_y} ${end_x} ${
+          end_y - swipeUpExtent
+        } ${parseInt(swipeUpSpeed)}`);
         await new Promise((resolve, reject) => {
+          swipeUpRandom.stderr.on("data", (error) => {
+            console.log("error: ", error);
+            reject();
+          });
+          swipeUpRandom.stdout.on("data", (data) => {
+            swipeUpRandomData = data;
+          });
           swipeUpRandom.on("close", (code) => {
             resolve();
           });
         });
+        console.log("swipeUpRandomData",swipeUpRandomData);
           var swipeDownRandom = exec(
           `${ADB} -s emulator-5164 shell input swipe ${start_x} ${end_y - swipeUpExtent} ${end_x} ${start_y} ${swipeUpSpeed}`
         );
