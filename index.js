@@ -301,22 +301,26 @@ try {
           });
         });
         script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
-        // console.log("Screen size height:", screenSize.height);
+        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
+        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
+        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
+        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
+        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
        
         script.delayFuncRandom(2000, 10000);
 
         console.log("Finishhhh");
-        var swipeUpRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(
-            swipeUpSpeed
-          )}`
-        );
-        await new Promise((resolve, reject) => {
-          swipeUpRandom.on("close", (code) => {
-            resolve();
-          });
-        });
-        script.delayFuncRandom(2000, 10000);
+        // var swipeUpRandom = exec(
+        //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(
+        //     swipeUpSpeed
+        //   )}`
+        // );
+        // await new Promise((resolve, reject) => {
+        //   swipeUpRandom.on("close", (code) => {
+        //     resolve();
+        //   });
+        // });
+        // script.delayFuncRandom(2000, 10000);
 
         // try {
         //   const screenHeight = 0;
