@@ -338,84 +338,93 @@ try {
         await new Promise((resolve) => setTimeout(resolve, delayTime));
 
         console.log("Finishhhh");
-        var swipeUpRandom = exec(
+        var openChat = exec(
           `${ADB} -s emulator-5164 shell input tap 388 948`
         );
         await new Promise((resolve, reject) => {
-          swipeUpRandom.on("close", (code) => {
+          openChat.on("close", (code) => {
             resolve();
           });
         });
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        script.swipeRandom(
+          start_x,
+          start_y,
+          end_x,
+          end_y,
+          parseInt(swipeUpSpeed)
+        );
+        script.swipeRandom(
+          start_x,
+          start_y,
+          end_x,
+          end_y,
+          parseInt(swipeUpSpeed)
+        );
+        script.swipeRandom(
+          start_x,
+          end_y,
+          end_x,
+          start_y,
+          parseInt(swipeUpSpeed)
+        );
+
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        var scrollDownChat = await py.findAndClick(
+          `${IMG}scrollDownChat.png`,
+          null,
+          5
+        );
+        if (!scrollDownChat) {
+          console.log("scrollDownChat img not found");
+        } else {
+          console.log("scrollDownChat img found");
+        }
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        var messageBox = await py.findAndClick(
+          `${IMG}messageBoxTest.png`,
+          null,
+          5
+        );
+        if (!messageBox) {
+          console.log("messageBox img not found");
+        } else {
+          console.log("messageBox img found");
+        }
+        var text = "Welcome";
+        var result = exec(`pythonScripts/writeText.py ${text}`);
+        await new Promise((resolve, reject) => {
+          result.stderr.on("data", (err) => {
+            console.log("python writeText -> error while typing : ", err);
+          });
+          result.on("close", (code) => {
+            console.log("python writeText -> exited with code : ", code);
+
+            resolve();
+          });
+        });
+        var sendMessage = await py.findAndClick(
+          `${IMG}sendMessageTest.png`,
+          null,
+          5
+        );
+        if (!sendMessage) {
+          console.log("sendMessage img not found");
+        } else {
+          console.log("sendMessage img found");
+        }
     
       } else {
         console.log("saby activated");
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
 
-        
-        // var swipeUpRandom = exec(
-        //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(
-        //     swipeUpSpeed
-        //   )}`
-        // );
-        // await new Promise((resolve, reject) => {
-        //   swipeUpRandom.on("close", (code) => {
-        //     resolve();
-        //   });
-        // });
-        // script.delayFuncRandom(2000, 10000);
-
-        // try {
-        //   const screenHeight = 0;
-        //   try {
-        //     exec(`${ADB} shell wm size`);
-        //     console.log(`${ADB} shell wm size`);
-        //     await new Promise((resolve) => setTimeout(resolve, 2000));
-
-        //     const { stdout } = await exec(`${ADB} shell wm size`);
-        //     console.log('Output of ADB command:', stdout);
-        //     const match = stdout.match(/\d+/g);
-        //     if (match && match.length === 2) {
-        //       screenHeight = {
-        //         width: parseInt(match[0]),
-        //         height: parseInt(match[1]),
-        //       };
-        //     } else {
-        //       throw new Error("Failed to get screen size");
-        //     }
-        //   } catch (err) {
-        //     console.error("Error:", err);
-        //     throw err;
-        //   }
-        //   console.log("*************screenHeight********************",screenHeight);
-        //   const minSwipeExtent = screenHeight.height / 2;
-        //   const maxSwipeExtent = screenHeight.height;
-        //   const minSwipeSpeed = 100;
-        //   const maxSwipeSpeed = 300;
-
-        //   // Swipe up
-        //   const swipeUpExtent = randomInRange(minSwipeExtent, maxSwipeExtent);
-        //   const swipeUpSpeed = randomInRange(minSwipeSpeed, maxSwipeSpeed);
-        //   await ADB.shell(
-        //     `input swipe ${screenHeight.width / 2} ${screenHeight.height - 1} ${
-        //       screenHeight.width / 2
-        //     } ${screenHeight.height - swipeUpExtent} ${swipeUpSpeed}`
-        //   );
-
-        //   await new Promise((resolve) => setTimeout(resolve, 1000));
-
-        //   // Swipe down
-        //   const swipeDownExtent = randomInRange(minSwipeExtent, maxSwipeExtent);
-        //   const swipeDownSpeed = randomInRange(minSwipeSpeed, maxSwipeSpeed);
-        //   await ADB.shell(
-        //     `input swipe ${screenHeight.width / 2} ${swipeUpExtent} ${
-        //       screenHeight.width / 2
-        //     } ${screenHeight.height - 1} ${swipeDownSpeed}`
-        //   );
-
-        //   console.log("Swipe up and down completed.");
-        // } catch (err) {
-        //   console.error("Error:", err);
-        // }
+       
 
         // await new Promise((resolve) => setTimeout(resolve, 1500));
         // var messageBox = await py.findAndClick(
