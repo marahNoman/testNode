@@ -306,7 +306,7 @@ try {
         const click_y = screenSize.height / 2; // Y coordinate for the click
         console.log("click_x",click_x);
         console.log("click_y",click_y);
-        
+        console.log(`${ADB} -s emulator-5164 shell input tap ${click_x} ${click_y}`);
         var clickChat = exec(
           `${ADB} -s emulator-5164 shell input tap ${click_x} ${click_y}}`
         );
