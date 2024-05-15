@@ -240,16 +240,6 @@ try {
             resolve();
           });
         });
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        var startApp = exec(
-          `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
-        );
-        await new Promise((resolve, reject) => {
-          startApp.on("close", (code) => {
-            resolve();
-          });
-        });
-
         let screenSizeWH = "";
         var screenWidth = 0;
         var screenHeight = 0;
@@ -281,9 +271,6 @@ try {
           console.error("Error:", err);
           throw err;
         }
-
-        // console.log("Screen size height:", screenSize.height);
-        script.delayFuncRandom(2000, 10000);
         const minSwipeExtent = screenHeight / 2;
         const maxSwipeExtent = screenHeight;
         const minSwipeSpeed = 100;
@@ -304,10 +291,18 @@ try {
         var start_y = screenHeight - 500;
         var end_x = screenWidth / 2;
         var end_y = 500;
-        script.delayFuncRandom(2000, 10000);
-        console.log("start_x & end_x :", start_x);
-        console.log("start_y:", start_y);
-        console.log("end_y:", end_y);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var startApp = exec(
+          `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
+        );
+        await new Promise((resolve, reject) => {
+          startApp.on("close", (code) => {
+            resolve();
+          });
+        });
+        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
+        // console.log("Screen size height:", screenSize.height);
+       
         script.delayFuncRandom(2000, 10000);
 
         console.log("Finishhhh");

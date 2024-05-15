@@ -268,8 +268,24 @@ constructor(){
     }
     delayFuncRandom(startTime,endTime) {
       var delayTime = Math.floor(Math.random() * (endTime - startTime + 1)) + startTime;
-      console.log("delayFuncRandom",delayTime);
+      // console.log("delayFuncRandom",delayTime);
       return new Promise(resolve => setTimeout(resolve, delayTime));
     }
+    async swipeRandom(start_x,start_y,end_x,end_y,swipeUpSpeed){
+      delayFuncRandom(2000, 10000);
+      console.log("swipeRandom start")
+      var swipeUpRandom = exec(
+        `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${swipeUpSpeed}`
+      );
+      await new Promise((resolve, reject) => {
+        swipeUpRandom.on("close", (code) => {
+          resolve();
+        });
+      });
+      console.log("swipeRandom end")
+
+      delayFuncRandom(2000, 10000);
+    }
+   
     
 }
