@@ -300,9 +300,10 @@ try {
 
 
         var start_x = screenWidth / 2;
-        var start_y = screenHeight - 500;
+        // var start_y = screenHeight - 500;
+        var start_y = getRandomNumber(300,1300);
         var end_x = screenWidth / 2;
-        var end_y = 500;
+        var end_y = getRandomNumber(200,500);
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
         console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
@@ -334,9 +335,9 @@ try {
           minSwipeSpeed;
           script.swipeRandom(
             start_x,
-            end_y,
+            getRandomNumber(200,500),
             end_x,
-            start_y,
+            getRandomNumber(300,1300),
             parseInt(swipeDownSpeed1)
           );
           await new Promise((resolve) => setTimeout(resolve, 1500));
