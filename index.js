@@ -308,6 +308,9 @@ try {
         script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
        
         script.delayFuncRandom(2000, 10000);
+        script.delayFuncRandom(2000, 10000);
+        script.delayFuncRandom(2000, 10000);
+        script.delayFuncRandom(2000, 10000);
 
         console.log("Finishhhh");
         // var swipeUpRandom = exec(
