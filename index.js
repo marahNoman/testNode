@@ -256,7 +256,6 @@ try {
 
         try {
           const screenSize = exec(ADB + " -s emulator-5164 shell wm size");
-          console.log("Output of ADB command:", stdout);
           await new Promise((resolve, reject) => {
             screenSize.stderr.on("data", (error) => {
               console.log("error: ", error);
