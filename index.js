@@ -249,6 +249,10 @@ try {
             resolve();
           });
         });
+        console.log("Wait Random");
+        script.delayFuncRandom(2000, 10000);
+        script.delayFuncRandom(2000, 10000);
+
         let screenSizeWH = "";
         var screenWidth = 0;
         var screenHeight = 0;
@@ -303,10 +307,7 @@ try {
         
         script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
         script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
-        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
-        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
-        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
-        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
+        script.swipeRandom(start_x,end_y,end_x,start_y,parseInt(swipeUpSpeed));
        
         script.delayFuncRandom(2000, 10000);
         script.delayFuncRandom(2000, 10000);
