@@ -244,11 +244,10 @@ try {
           });
         });
         console.log("Wait Random");
-        var delayTime =
-        Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
-      // console.log("delayFuncRandom",delayTime);
-       await new Promise((resolve) => setTimeout(resolve, delayTime));
-  
+        var delayTime = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
+        // console.log("delayFuncRandom",delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+
         script.delayFuncRandom(2000, 10000);
         script.delayFuncRandom(2000, 10000);
 
@@ -303,19 +302,33 @@ try {
         var start_y = screenHeight - 500;
         var end_x = screenWidth / 2;
         var end_y = 500;
-        
-        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
-        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
-        script.swipeRandom(start_x,end_y,end_x,start_y,parseInt(swipeUpSpeed));
-        var delayTime =
-        Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
-      // console.log("delayFuncRandom",delayTime);
-       await new Promise((resolve) => setTimeout(resolve, delayTime));
 
-        script.delayFuncRandom(2000, 10000);
-        script.delayFuncRandom(2000, 10000);
+        script.swipeRandom(
+          start_x,
+          start_y,
+          end_x,
+          end_y,
+          parseInt(swipeUpSpeed)
+        );
+        script.swipeRandom(
+          start_x,
+          start_y,
+          end_x,
+          end_y,
+          parseInt(swipeUpSpeed)
+        );
+        script.swipeRandom(
+          start_x,
+          end_y,
+          end_x,
+          start_y,
+          parseInt(swipeUpSpeed)
+        );
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
 
-        console.log("Finishhhh");        //TODO update saby data to activated false and activationStatus Not Active
+        console.log("Finishhhh"); //TODO update saby data to activated false and activationStatus Not Active
       } else {
         console.log("saby activated");
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
@@ -338,9 +351,10 @@ try {
           });
         });
         console.log("Wait Random");
-        
-        script.delayFuncRandom(2000, 10000);
-        script.delayFuncRandom(2000, 10000);
+
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
 
         let screenSizeWH = "";
         var screenWidth = 0;
@@ -393,13 +407,35 @@ try {
         var start_y = screenHeight - 500;
         var end_x = screenWidth / 2;
         var end_y = 500;
-        
-        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
-        script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
-        script.swipeRandom(start_x,end_y,end_x,start_y,parseInt(swipeUpSpeed));
-       
-        script.delayFuncRandom(2000, 10000);
-        script.delayFuncRandom(2000, 10000);
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+
+        script.swipeRandom(
+          start_x,
+          start_y,
+          end_x,
+          end_y,
+          parseInt(swipeUpSpeed)
+        );
+        script.swipeRandom(
+          start_x,
+          start_y,
+          end_x,
+          end_y,
+          parseInt(swipeUpSpeed)
+        );
+        script.swipeRandom(
+          start_x,
+          end_y,
+          end_x,
+          start_y,
+          parseInt(swipeUpSpeed)
+        );
+
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
 
         console.log("Finishhhh");
         // var swipeUpRandom = exec(
