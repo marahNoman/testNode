@@ -284,14 +284,11 @@ try {
         console.log("swipeUpExtent:", swipeUpExtent);
         console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
 
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
         var start_x = screenSize.width / 2;
         var start_y = screenSize.height - 200;
         var end_x = screenSize.width / 2;
         var end_y = 200;
-        console.log("delayTime", delayTime);
         script.delayFuncRandom(2000,10000);
-        console.log("delayTimeFun", delayTime);
 
         var swipeUpRandom = exec(
           `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
@@ -303,10 +300,7 @@ try {
             resolve();
           });
         });
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
-        console.log("delayTimeChat", delayTime);
-
-        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        script.delayFuncRandom(2000,10000);
         const click_x = screenSize.width / 2; // X coordinate for the click
         const click_y = screenSize.height / 2; // Y coordinate for the click
         console.log("click_x",click_x);
@@ -322,17 +316,14 @@ try {
         });
         
         console.log("clicked");
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
-        console.log("delayTime", delayTime);
+        script.delayFuncRandom(2000,10000);
 
         var swipeUpSpeed =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
           minSwipeSpeed;
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
-        console.log("delayTimeChat", delayTime);
-        console.log("swipeUpSpeedChat", swipeUpSpeed);
+          script.delayFuncRandom(2000,10000);
+          console.log("swipeUpSpeedChat", swipeUpSpeed);
 
-        await new Promise((resolve) => setTimeout(resolve, delayTime));
         var swipeUpRandom = exec(
           `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
             end_y - swipeUpExtent
