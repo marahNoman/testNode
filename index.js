@@ -370,9 +370,9 @@ try {
           minSwipeSpeed;
           script.swipeRandom(
             start_x,
-            start_y,
+            getRandomNumber(300,1300),
             end_x,
-            end_y,
+            getRandomNumber(200,500),
             parseInt(swipeUpSpeed2)
           );
           await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -387,9 +387,9 @@ try {
           minSwipeSpeed;
           script.swipeRandom(
             start_x,
-            end_y,
+            getRandomNumber(200,500),
             end_x,
-            start_y,
+            getRandomNumber(300,1300),
             parseInt(swipeDownSpeed2)
           );
           await new Promise((resolve) => setTimeout(resolve, 1500));
