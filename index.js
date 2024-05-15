@@ -251,6 +251,8 @@ try {
             resolve();
           });
         });
+        script.delayFuncRandom(2000,10000);
+
         // const screenSize = {
         //   width:
         //     os.platform() === "win32"
@@ -293,7 +295,7 @@ try {
         }
         
         // console.log("Screen size height:", screenSize.height);
-
+        script.delayFuncRandom(2000,10000);
         const minSwipeExtent = screenHeight / 2;
         const maxSwipeExtent = screenHeight;
         const minSwipeSpeed = 100;
@@ -318,9 +320,10 @@ try {
         console.log("start_x & end_x :", start_x);
         console.log("start_y:", start_y);
         console.log("end_y:", end_y);
-        
-         
-        var swipeUpRandom = exec(
+        script.delayFuncRandom(2000,10000);
+
+    
+          var swipeUpRandom = exec(
             `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(swipeUpSpeed)}`
           );
           await new Promise((resolve, reject) => {
