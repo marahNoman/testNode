@@ -334,6 +334,7 @@ try {
         );
         if (!scrollDownChat) {
           console.log("scrollDownChat img not found");
+          return;
         } else {
           console.log("scrollDownChat img found");
         }
@@ -349,6 +350,8 @@ try {
 
         if (!messageBox) {
           console.log("messageBox img not found");
+          return;
+
         } else {
           console.log("messageBox img found");
         }
@@ -371,6 +374,8 @@ try {
         );
         if (!sendMessage) {
           console.log("sendMessage img not found");
+          return;
+
         } else {
           console.log("sendMessage img found");
         }
