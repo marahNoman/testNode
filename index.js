@@ -226,6 +226,12 @@ try {
       if (!activated) {
         console.log("\n * No avd activated, Starting init script. \n");
 
+        
+    
+      } else {
+        console.log("saby activated");
+        console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
+
         var stop = exec(
           `${ADB} -s emulator-5164 shell am force-stop com.whatsapp`
         );
@@ -407,12 +413,6 @@ try {
         } else {
           console.log("sendMessage img found");
         }
-    
-      } else {
-        console.log("saby activated");
-        console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
-
-       
 
         // await new Promise((resolve) => setTimeout(resolve, 1500));
         // var messageBox = await py.findAndClick(
