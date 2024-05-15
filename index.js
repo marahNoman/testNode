@@ -311,16 +311,16 @@ try {
         console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
 
         var start_x = screenWidth / 2;
-        var start_y = screenHeight - 200;
+        var start_y = screenHeight - 500;
         var end_x = screenWidth / 2;
-        var end_y = 200;
+        var end_y = 500;
         script.delayFuncRandom(2000,10000);
         console.log("start_x & end_x :", start_x);
         console.log("start_y:", start_y);
         console.log("end_y:", end_y);
         let swipeUpRandomData = "";
         
-        const swipeUpRandom = exec(ADB + " -s emulator-5164 shell input swipe " + `${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(swipeUpSpeed)}`);
+        const swipeUpRandom = exec(`${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(swipeUpSpeed)}`);
         await new Promise((resolve, reject) => {
           swipeUpRandom.stderr.on("data", (error) => {
             console.log("error: ", error);
