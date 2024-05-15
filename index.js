@@ -305,7 +305,7 @@ try {
         const click_y = screenSize.height / 2; // Y coordinate for the click
         console.log("click_x",click_x);
         console.log("click_y",click_y);
-        await py.click(click_x, click_y);
+        await py.click(527, 905);
         
         console.log("clicked");
         script.delayFuncRandom(2000,10000);

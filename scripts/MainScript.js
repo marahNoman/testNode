@@ -268,7 +268,7 @@ constructor(){
     }
     delayFuncRandom(startTime,endTime) {
       var delayTime = Math.floor(Math.random() * (endTime - startTime + 1)) + startTime;
-      console.log("delayFuncRandom");
+      console.log("delayFuncRandom",delayTime);
       return new Promise(resolve => setTimeout(resolve, delayTime));
     }
     
