@@ -325,6 +325,7 @@ try {
             end_y,
             parseInt(swipeUpSpeed1)
           );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
         } 
         var numberOfSwipeDown =
         Math.floor(Math.random() * 3) + 1;
@@ -341,6 +342,7 @@ try {
             start_y,
             parseInt(swipeDownSpeed1)
           );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
         }
 
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
@@ -375,6 +377,7 @@ try {
             end_y,
             parseInt(swipeUpSpeed2)
           );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
         } 
         var numberOfSwipeDown =
         Math.floor(Math.random() * 3) + 1;
@@ -391,6 +394,8 @@ try {
             start_y,
             parseInt(swipeDownSpeed2)
           );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          
         }
        
        
