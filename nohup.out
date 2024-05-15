@@ -1,0 +1,42 @@
+ Running ... 
+This endpoint :  95.216.20.45:6899
+getGB
+GB is GB
+checkIfAvdExist GB
+process.argv[3] : undefined
+checkIfAvdExist return data  ./GB.avd
+
+checkIfAvdExist : true
+checkIfAvdExist Exited with code  0
+ --- CheckIfActivated() --- 
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+PROFILE_AVD_NAME GB
+console_port 5164
+checker response [
+  5164,
+  'whatsapp',
+  'GB',
+  '5cf42eabe2ef68a0',
+  'A',
+  '135.181.130.186:1992'
+]
+init Helper
