@@ -254,7 +254,6 @@ try {
         var screenWidth = 0;
         var screenHeight = 0;
 
-        console.log("screenSizeWH:", screenSizeWH);
         try {
           const screenSize = exec(ADB + " -s emulator-5164 shell wm size");
           console.log("Output of ADB command:", stdout);
@@ -283,6 +282,7 @@ try {
           console.error("Error:", err);
           throw err;
         }
+        console.log("screenSizeWH:", screenSizeWH);
 
         // console.log("Screen size height:", screenSize.height);
         script.delayFuncRandom(2000, 10000);
