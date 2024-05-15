@@ -240,6 +240,15 @@ try {
             resolve();
           });
         });
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var startApp = exec(
+          `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
+        );
+        await new Promise((resolve, reject) => {
+          startApp.on("close", (code) => {
+            resolve();
+          });
+        });
         let screenSizeWH = "";
         var screenWidth = 0;
         var screenHeight = 0;
@@ -291,15 +300,7 @@ try {
         var start_y = screenHeight - 500;
         var end_x = screenWidth / 2;
         var end_y = 500;
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        var startApp = exec(
-          `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
-        );
-        await new Promise((resolve, reject) => {
-          startApp.on("close", (code) => {
-            resolve();
-          });
-        });
+        
         script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
         script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
         script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
