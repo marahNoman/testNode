@@ -264,23 +264,32 @@ try {
         //   width: 414,
         //   height: 727,
         // };
-        let screenSizeWH ="";
+        let screenSizeWH = "";
 
         const screenSize = exec(ADB + " -s emulator-5164 shell wm size");
-        await  new Promise((resolve,reject)=>{
-          screenSize.stderr.on('data',(error)=>{
-              console.log("error: ",error);
-              reject();
+        await new Promise((resolve, reject) => {
+          screenSize.stderr.on("data", (error) => {
+            console.log("error: ", error);
+            reject();
           });
-          screenSize.stdout.on('data', (data) => {
-            screenSizeWH = data;
-            }); 
-            screenSize.on('close',(code)=>{
-              resolve();
+          screenSize.stdout.on("data", (data) => {
+            screenSizeWH = data.trim();
           });
-         });
-        console.log("Screen size:", screenSize);
+          screenSize.on("close", (code) => {
+            resolve();
+          });
+        });
         console.log("screenSizeWH:", screenSizeWH);
+        const match = screenSizeWH.match(/\d+/g);
+        if (match && match.length === 2) {
+          const screenWidth = parseInt(match[0]);
+          const screenHeight = parseInt(match[1]);
+          console.log("Screen Width:", screenWidth);
+          console.log("Screen Height:", screenHeight);
+        } else {
+          throw new Error("Failed to get screen size");
+        }
+        
         // console.log("Screen size height:", screenSize.height);
 
         // const minSwipeExtent = screenSize.height / 2;
@@ -321,7 +330,7 @@ try {
         // console.log("click_x",click_x);
         // console.log("click_y",click_y);
         // await py.click(527, 905);
-        
+
         // console.log("clicked");
         // script.delayFuncRandom(2000,10000);
 
