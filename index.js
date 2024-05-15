@@ -250,11 +250,7 @@ try {
           });
         });
         console.log("Wait Random");
-
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
-        console.log("delayFuncRandom", delayTime);
-        await new Promise((resolve) => setTimeout(resolve, delayTime));
-
+        
         let screenSizeWH = "";
         var screenWidth = 0;
         var screenHeight = 0;
@@ -301,6 +297,7 @@ try {
         console.log("maxSwipeExtent:", maxSwipeExtent);
         console.log("swipeUpExtent:", swipeUpExtent);
         console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
+
 
         var start_x = screenWidth / 2;
         var start_y = screenHeight - 500;
