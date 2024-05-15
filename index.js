@@ -335,7 +335,7 @@ try {
         });
         console.log("swipeUpRandomData",swipeUpRandomData);
           var swipeDownRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${end_y - swipeUpExtent} ${end_x} ${start_y} ${swipeUpSpeed}`
+          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${end_y} ${end_x} ${start_y} ${parseInt(swipeUpSpeed)}`
         );
         await new Promise((resolve, reject) => {
           swipeDownRandom.on("close", (code) => {
