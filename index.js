@@ -244,7 +244,11 @@ try {
           });
         });
         console.log("Wait Random");
-        
+        var delayTime =
+        Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
+      // console.log("delayFuncRandom",delayTime);
+       await new Promise((resolve) => setTimeout(resolve, delayTime));
+  
         script.delayFuncRandom(2000, 10000);
         script.delayFuncRandom(2000, 10000);
 
@@ -303,7 +307,11 @@ try {
         script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
         script.swipeRandom(start_x,start_y,end_x,end_y,parseInt(swipeUpSpeed));
         script.swipeRandom(start_x,end_y,end_x,start_y,parseInt(swipeUpSpeed));
-       
+        var delayTime =
+        Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
+      // console.log("delayFuncRandom",delayTime);
+       await new Promise((resolve) => setTimeout(resolve, delayTime));
+
         script.delayFuncRandom(2000, 10000);
         script.delayFuncRandom(2000, 10000);
 
