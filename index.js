@@ -329,7 +329,7 @@ try {
           `${ADB} -s emulator-5164 shell input swipe ${start_x} ${end_y - swipeUpExtent} ${end_x} ${start_y} ${swipeUpSpeed}`
         );
         await new Promise((resolve, reject) => {
-          swipeUpRandom.on("close", (code) => {
+          swipeDownRandom.on("close", (code) => {
             resolve();
           });
         });
