@@ -290,7 +290,9 @@ try {
         var end_x = screenSize.width / 2;
         var end_y = 200;
         console.log("delayTime", delayTime);
-        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        script.delayFunc(delayTime);
+        console.log("delayTimeFun", delayTime);
+
         var swipeUpRandom = exec(
           `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${
             end_y - swipeUpExtent
