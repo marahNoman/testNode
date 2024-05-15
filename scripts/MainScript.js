@@ -9,6 +9,8 @@ import { WhatsAppHelper } from "../helpers/WhatsApp.js";
 import { exec } from "child_process";
 import { BehaviourScript } from "./BehaviortScripts.js";
 import { WhatsappActivation } from "./ActivationScript.js";
+import os from "os";
+
 const IMG = `images/`;
 export class MainScript {
   python = new Python();
