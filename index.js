@@ -320,6 +320,13 @@ try {
         );
         script.swipeRandom(
           start_x,
+          start_y,
+          end_x,
+          end_y,
+          parseInt(swipeUpSpeed)
+        );
+        script.swipeRandom(
+          start_x,
           end_y,
           end_x,
           start_y,
@@ -331,6 +338,15 @@ try {
         await new Promise((resolve) => setTimeout(resolve, delayTime));
 
         console.log("Finishhhh");
+        var swipeUpRandom = exec(
+          `${ADB} -s emulator-5164 shell input tap 388 948`
+        );
+        await new Promise((resolve, reject) => {
+          swipeUpRandom.on("close", (code) => {
+            resolve();
+          });
+        });
+    
       } else {
         console.log("saby activated");
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
