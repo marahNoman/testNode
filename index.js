@@ -312,9 +312,7 @@ try {
         script.delayFuncRandom(2000, 10000);
 
         var swipeUpRandom = exec(
-          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(
-            swipeUpSpeed
-          )}`
+          `${ADB} -s emulator-5164 shell input swipe 540 1320 540 500 121`
         );
         await new Promise((resolve, reject) => {
           swipeUpRandom.on("close", (code) => {
