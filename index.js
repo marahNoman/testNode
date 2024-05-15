@@ -250,6 +250,7 @@ try {
           });
         });
         console.log("Wait Random");
+        
         script.delayFuncRandom(2000, 10000);
         script.delayFuncRandom(2000, 10000);
 

@@ -334,11 +334,11 @@ export class MainScript {
   delayFunc(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
-  delayFuncRandom(startTime, endTime) {
+  async delayFuncRandom(startTime, endTime) {
     var delayTime =
       Math.floor(Math.random() * (endTime - startTime + 1)) + startTime;
     // console.log("delayFuncRandom",delayTime);
-    return new Promise((resolve) => setTimeout(resolve, delayTime));
+    return await new Promise((resolve) => setTimeout(resolve, delayTime));
   }
   async swipeRandom(start_x, start_y, end_x, end_y, swipeUpSpeed) {
     var user = os.userInfo().username;
