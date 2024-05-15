@@ -144,7 +144,7 @@ const activationService = new ActivationService();
 const initializeService = new InitializeService();
 const testModeServices = new TestModeServices();
 const behaviorService = new BehaviourServices();
-
+const py = new Python();
 const server = new grpc.Server();
 server.addService(activationProtoservice.NodeActivation.service, {
   StartActivation: activationService.startActivation,
@@ -229,10 +229,8 @@ try {
         return;
         //TODO update saby data to activated false and activationStatus Not Active
       } else {
-        const py = new Python();
         console.log("saby activated");
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
-        console.log(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
 
         var stop = exec(
           `${ADB} -s emulator-5164 shell am force-stop com.whatsapp`
@@ -251,51 +249,43 @@ try {
             resolve();
           });
         });
-        script.delayFuncRandom(2000,10000);
 
-        // const screenSize = {
-        //   width:
-        //     os.platform() === "win32"
-        //       ? os.userInfo().screenWidth
-        //       : process.stdout.columns,
-        //   height:
-        //     os.platform() === "win32"
-        //       ? os.userInfo().screenHeight
-        //       : process.stdout.rows,
-        // };
-        // const screenSize = {
-        //   width: 414,
-        //   height: 727,
-        // };
         let screenSizeWH = "";
-        var screenWidth=0;
-        var screenHeight=0;
-        const screenSize = exec(ADB + " -s emulator-5164 shell wm size");
-        await new Promise((resolve, reject) => {
-          screenSize.stderr.on("data", (error) => {
-            console.log("error: ", error);
-            reject();
-          });
-          screenSize.stdout.on("data", (data) => {
-            screenSizeWH = data.trim();
-          });
-          screenSize.on("close", (code) => {
-            resolve();
-          });
-        });
+        var screenWidth = 0;
+        var screenHeight = 0;
+
         console.log("screenSizeWH:", screenSizeWH);
-        const match = screenSizeWH.match(/\d+/g);
-        if (match && match.length === 2) {
-          screenWidth = parseInt(match[0]);
-          screenHeight = parseInt(match[1]);
-          console.log("Screen Width:", screenWidth);
-          console.log("Screen Height:", screenHeight);
-        } else {
-          throw new Error("Failed to get screen size");
+        try {
+          const screenSize = exec(ADB + " -s emulator-5164 shell wm size");
+          console.log("Output of ADB command:", stdout);
+          await new Promise((resolve, reject) => {
+            screenSize.stderr.on("data", (error) => {
+              console.log("error: ", error);
+              reject();
+            });
+            screenSize.stdout.on("data", (data) => {
+              screenSizeWH = data.trim();
+            });
+            screenSize.on("close", (code) => {
+              resolve();
+            });
+          });
+          const match = screenSizeWH.match(/\d+/g);
+          if (match && match.length === 2) {
+            screenWidth = parseInt(match[0]);
+            screenHeight = parseInt(match[1]);
+            console.log("Screen Width:", screenWidth);
+            console.log("Screen Height:", screenHeight);
+          } else {
+            throw new Error("Failed to get screen size");
+          }
+        } catch (err) {
+          console.error("Error:", err);
+          throw err;
         }
-        
+
         // console.log("Screen size height:", screenSize.height);
-        script.delayFuncRandom(2000,10000);
+        script.delayFuncRandom(2000, 10000);
         const minSwipeExtent = screenHeight / 2;
         const maxSwipeExtent = screenHeight;
         const minSwipeSpeed = 100;
@@ -316,31 +306,32 @@ try {
         var start_y = screenHeight - 500;
         var end_x = screenWidth / 2;
         var end_y = 500;
-        script.delayFuncRandom(2000,10000);
+        script.delayFuncRandom(2000, 10000);
         console.log("start_x & end_x :", start_x);
         console.log("start_y:", start_y);
         console.log("end_y:", end_y);
-        script.delayFuncRandom(2000,10000);
+        script.delayFuncRandom(2000, 10000);
 
-    
-          var swipeUpRandom = exec(
-            `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(swipeUpSpeed)}`
-          );
-          await new Promise((resolve, reject) => {
-            swipeUpRandom.on("close", (code) => {
-              resolve();
-            });
+        var swipeUpRandom = exec(
+          `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(
+            swipeUpSpeed
+          )}`
+        );
+        await new Promise((resolve, reject) => {
+          swipeUpRandom.on("close", (code) => {
+            resolve();
           });
-          script.delayFuncRandom(2000,10000);
+        });
+        script.delayFuncRandom(2000, 10000);
 
-          // var swipeDownRandom = exec(
-          //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${end_y} ${end_x} ${start_y} ${parseInt(swipeUpSpeed)}`
-          // );
-          // await new Promise((resolve, reject) => {
-          //   swipeDownRandom.on("close", (code) => {
-          //     resolve();
-          //   });
-          // });
+        // var swipeDownRandom = exec(
+        //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${end_y} ${end_x} ${start_y} ${parseInt(swipeUpSpeed)}`
+        // );
+        // await new Promise((resolve, reject) => {
+        //   swipeDownRandom.on("close", (code) => {
+        //     resolve();
+        //   });
+        // });
         // script.delayFuncRandom(2000,10000);
         // const click_x = screenSize.width / 2; // X coordinate for the click
         // const click_y = screenSize.height / 2; // Y coordinate for the click
