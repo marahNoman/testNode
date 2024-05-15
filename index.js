@@ -290,7 +290,7 @@ try {
         var end_x = screenSize.width / 2;
         var end_y = 200;
         console.log("delayTime", delayTime);
-        script.delayFunc(delayTime);
+        script.delayFuncRandom(2000,10000);
         console.log("delayTimeFun", delayTime);
 
         var swipeUpRandom = exec(

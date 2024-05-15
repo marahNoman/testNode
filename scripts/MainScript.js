@@ -266,6 +266,10 @@ constructor(){
     delayFunc(time) {
       return new Promise(resolve => setTimeout(resolve, time));
     }
-   
+    delayFuncRandom(startTime,endTime) {
+      var delayTime = Math.floor(Math.random() * (endTime - startTime + 1)) + startTime;
+      console.log("delayFuncRandom");
+      return new Promise(resolve => setTimeout(resolve, delayTime));
+    }
     
 }
