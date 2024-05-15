@@ -262,17 +262,17 @@ try {
         // };
         const screenSize = {
           width: 414,
-          height: 727
+          height: 727,
         };
         console.log("Screen size:", screenSize);
         console.log("Screen size width:", screenSize.width);
         console.log("Screen size height:", screenSize.height);
-        
+
         const minSwipeExtent = screenSize.height / 2;
         const maxSwipeExtent = screenSize.height;
         const minSwipeSpeed = 100;
         const maxSwipeSpeed = 300;
-        
+
         var swipeUpExtent =
           Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
           minSwipeExtent;
@@ -283,7 +283,7 @@ try {
         console.log("maxSwipeExtent:", maxSwipeExtent);
         console.log("swipeUpExtent:", swipeUpExtent);
         console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
-        
+
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
         var start_x = screenSize.width / 2;
         var start_y = screenSize.height - 200;
@@ -302,7 +302,10 @@ try {
           });
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        await py.click(514, 1400);
+        const click_x = screenSize.width / 2; // X coordinate for the click
+        const click_y = screenSize.height / 2; // Y coordinate for the click
+
+        await py.click(click_x, click_y);
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
         console.log("delayTime", delayTime);
 
@@ -334,7 +337,7 @@ try {
         } else {
           console.log("scrollDownChat img found");
         }
-          var messageBox = await py.findAndClick(
+        var messageBox = await py.findAndClick(
           `${IMG}messageBoxTest.png`,
           null,
           5
@@ -362,15 +365,15 @@ try {
           });
         });
         var sendMessage = await py.findAndClick(
-            `${IMG}sendMessageTest.png`,
-            null,
-            5
-          );
-          if (!sendMessage) {
-            console.log("sendMessage img not found");
-          } else {
-            console.log("sendMessage img found");
-          }
+          `${IMG}sendMessageTest.png`,
+          null,
+          5
+        );
+        if (!sendMessage) {
+          console.log("sendMessage img not found");
+        } else {
+          console.log("sendMessage img found");
+        }
         // await new Promise((resolve) => setTimeout(resolve, 1500));
         // var swipeUpRandom = exec(
         //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${start_y} ${end_x} ${end_y- swipeUpExtent} ${swipeUpSpeed}`
