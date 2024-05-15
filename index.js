@@ -330,14 +330,14 @@ try {
           });
           script.delayFuncRandom(2000,10000);
 
-          var swipeDownRandom = exec(
-            `${ADB} -s emulator-5164 shell input swipe ${start_x} ${end_y} ${end_x} ${start_y} ${parseInt(swipeUpSpeed)}`
-          );
-          await new Promise((resolve, reject) => {
-            swipeDownRandom.on("close", (code) => {
-              resolve();
-            });
-          });
+          // var swipeDownRandom = exec(
+          //   `${ADB} -s emulator-5164 shell input swipe ${start_x} ${end_y} ${end_x} ${start_y} ${parseInt(swipeUpSpeed)}`
+          // );
+          // await new Promise((resolve, reject) => {
+          //   swipeDownRandom.on("close", (code) => {
+          //     resolve();
+          //   });
+          // });
         // script.delayFuncRandom(2000,10000);
         // const click_x = screenSize.width / 2; // X coordinate for the click
         // const click_y = screenSize.height / 2; // Y coordinate for the click
