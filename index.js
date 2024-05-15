@@ -233,6 +233,7 @@ try {
         console.log("saby activated");
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
         console.log(`${ADB} -s emulator-5164 shell am force-stop com.whatsapp`);
+
         var stop = exec(
           `${ADB} -s emulator-5164 shell am force-stop com.whatsapp`
         );
@@ -319,9 +320,7 @@ try {
         console.log("end_y:", end_y);
         let swipeUpRandomData = "";
         
-        const swipeUpRandom = exec(ADB + " -s emulator-5164 shell input swipe" + `${start_x} ${start_y} ${end_x} ${
-          end_y - swipeUpExtent
-        } ${parseInt(swipeUpSpeed)}`);
+        const swipeUpRandom = exec(ADB + " -s emulator-5164 shell input swipe " + `${start_x} ${start_y} ${end_x} ${end_y} ${parseInt(swipeUpSpeed)}`);
         await new Promise((resolve, reject) => {
           swipeUpRandom.stderr.on("data", (error) => {
             console.log("error: ", error);
