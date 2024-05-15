@@ -311,6 +311,8 @@ try {
         await new Promise((resolve) => setTimeout(resolve, delayTime));
 
         for (var i = 0; i < numberOfSwipeUp; i++) {
+          console.log("numberOfSwipeUP contact");
+
           var swipeUpSpeed1 =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
           minSwipeSpeed;
@@ -325,6 +327,8 @@ try {
         var numberOfSwipeDown =
         Math.floor(Math.random() * 3) + 1;
         for (var i = 0; i < numberOfSwipeDown; i++) {
+          console.log("numberOfSwipeDown contact");
+
           var swipeDownSpeed1 =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
           minSwipeSpeed;
@@ -357,6 +361,8 @@ try {
         Math.floor(Math.random() * 3) + 1;
 
         for (var i = 0; i < numberOfSwipeUp; i++) {
+          console.log("numberOfSwipeUP caht");
+
           var swipeUpSpeed2 =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
           minSwipeSpeed;
@@ -371,6 +377,7 @@ try {
         var numberOfSwipeDown =
         Math.floor(Math.random() * 3) + 1;
         for (var i = 0; i < numberOfSwipeDown; i++) {
+          console.log("numberOfSwipeDown caht");
           var swipeDownSpeed2 =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
           minSwipeSpeed;
