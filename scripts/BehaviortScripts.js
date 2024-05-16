@@ -1042,7 +1042,7 @@ export class BehaviourScript{
         var screenHeight = 0;
 
         try {
-          const screenSize = exec(ADB + " -s emulator-${this.emulatorPort} shell wm size");
+          const screenSize = exec(`${ADB} -s emulator-${this.emulatorPort} shell wm size`);
           await new Promise((resolve, reject) => {
             screenSize.stderr.on("data", (error) => {
               console.log("error: ", error);
