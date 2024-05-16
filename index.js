@@ -313,7 +313,7 @@ try {
         console.log("numberOfSwipeUP contact",numberOfSwipeUp);
 
         for (var i = 0; i < numberOfSwipeUp; i++) {
-          var start_end_x=getRandomNumber(40,1040);
+          var start_end_x=script.getRandomNumber(40,1040);
           var swipeUpSpeed1 =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
           minSwipeSpeed;
@@ -330,7 +330,7 @@ try {
         Math.floor(Math.random() * 3) + 1;
         console.log("numberOfSwipeDown contact",numberOfSwipeDown);
         for (var i = 0; i < numberOfSwipeDown; i++) {
-          var start_end_x=getRandomNumber(50,1000);
+          var start_end_x=script.getRandomNumber(50,1000);
 
           var swipeDownSpeed1 =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
@@ -366,7 +366,7 @@ try {
         console.log("numberOfSwipeUP caht",numberOfSwipeUp);
 
         for (var i = 0; i < numberOfSwipeUp; i++) {
-          var start_end_x=getRandomNumber(50,1000);
+          var start_end_x=script.getRandomNumber(50,1000);
 
           var swipeUpSpeed2 =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
@@ -385,7 +385,7 @@ try {
         console.log("numberOfSwipeDown caht",numberOfSwipeDown);
 
         for (var i = 0; i < numberOfSwipeDown; i++) {
-          var start_end_x=getRandomNumber(50,1000);
+          var start_end_x=script.getRandomNumber(50,1000);
 
           var swipeDownSpeed2 =
           Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
