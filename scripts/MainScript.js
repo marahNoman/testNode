@@ -355,7 +355,7 @@ export class MainScript {
     console.log("swipeRandom done");
   }
   getRandomNumber(min, max) {
-    console.log("min:",min," max:",max);
+    // console.log("min:",min," max:",max);
     
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }

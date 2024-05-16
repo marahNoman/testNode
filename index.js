@@ -346,7 +346,7 @@ try {
         }
 
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
-        console.log("delayFuncRandom", delayTime);
+        // console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
 
         console.log("Finishhhh");
@@ -359,7 +359,7 @@ try {
           });
         });
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
-        console.log("delayFuncRandom", delayTime);
+        // console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
         var numberOfSwipeUp =
         Math.floor(Math.random() * 3) + 1;
@@ -401,7 +401,7 @@ try {
        
 
         var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
-        console.log("delayFuncRandom", delayTime);
+        // console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
       
         var messageBox = await py.findAndClick(
