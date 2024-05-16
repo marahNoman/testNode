@@ -1019,7 +1019,7 @@ export class BehaviourScript{
         console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
         const py = new Python();
         var stop = exec(
-          `${ADB} -s emulator-${this.emulatorPort} shell am force-stop com.whatsapp`
+          `${ADB} -s emulator-5164 shell am force-stop com.whatsapp`
         );
         await new Promise((resolve, reject) => {
           stop.on("close", (code) => {
@@ -1028,21 +1028,21 @@ export class BehaviourScript{
         });
         await new Promise((resolve) => setTimeout(resolve, 1500));
         var startApp = exec(
-          `${ADB} -s emulator-${this.emulatorPort} shell am start -n com.whatsapp/.Main`
+          `${ADB} -s emulator-5164 shell am start -n com.whatsapp/.Main`
         );
         await new Promise((resolve, reject) => {
           startApp.on("close", (code) => {
             resolve();
           });
         });
-        console.log("Wait Random");
+        console.log("===================================================");
         
         let screenSizeWH = "";
         var screenWidth = 0;
         var screenHeight = 0;
 
         try {
-          const screenSize = exec(`${ADB} -s emulator-${this.emulatorPort} shell wm size`);
+          const screenSize = exec(`${ADB} -s emulator-5164 shell wm size`);
           await new Promise((resolve, reject) => {
             screenSize.stderr.on("data", (error) => {
               console.log("error: ", error);
@@ -1129,7 +1129,7 @@ export class BehaviourScript{
 
         console.log("Finishhhh");
         var openChat = exec(
-          `${ADB} -s emulator-${this.emulatorPort} shell input tap 388 948`
+          `${ADB} -s emulator-5164 shell input tap 388 948`
         );
         await new Promise((resolve, reject) => {
           openChat.on("close", (code) => {
