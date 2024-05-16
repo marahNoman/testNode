@@ -337,7 +337,7 @@ export class MainScript {
   async delayFuncRandom(startTime, endTime) {
     var delayTime =
       Math.floor(Math.random() * (endTime - startTime + 1)) + startTime;
-    // console.log("delayFuncRandom",delayTime);
+    console.log("delayFuncRandom",delayTime);
     return await new Promise((resolve) => setTimeout(resolve, delayTime));
   }
   async swipeRandom(start_x, start_y, end_x, end_y, swipeUpSpeed) {
@@ -356,6 +356,7 @@ export class MainScript {
   }
   getRandomNumber(min, max) {
     console.log("min:",min," max:",max);
+    
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
