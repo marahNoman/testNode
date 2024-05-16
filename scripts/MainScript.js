@@ -337,7 +337,7 @@ export class MainScript {
   async delayFuncRandom(startTime, endTime) {
     var delayTime =
       Math.floor(Math.random() * (endTime - startTime + 1)) + startTime;
-    console.log("********************delayFuncRandom*************************",delayTime);
+    // console.log("********************delayFuncRandom*************************",delayTime);
     await new Promise((resolve) => setTimeout(resolve, delayTime));
     return ;
   }

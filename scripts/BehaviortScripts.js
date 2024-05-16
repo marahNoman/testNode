@@ -1085,7 +1085,9 @@ export class BehaviourScript{
         console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
 
 
-        mainScript.delayFuncRandom(2000,10000);
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
         var numberOfSwipeUp =
         Math.floor(Math.random() * 3) + 1;
         console.log("numberOfSwipeUP contact",numberOfSwipeUp);
@@ -1123,7 +1125,7 @@ export class BehaviourScript{
           await new Promise((resolve) => setTimeout(resolve, 1500));
         }
 
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
         console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
 
@@ -1136,7 +1138,7 @@ export class BehaviourScript{
             resolve();
           });
         });
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
         console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
         var numberOfSwipeUp =
@@ -1181,7 +1183,7 @@ export class BehaviourScript{
        
        
 
-        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
         console.log("delayFuncRandom", delayTime);
         await new Promise((resolve) => setTimeout(resolve, delayTime));
       
