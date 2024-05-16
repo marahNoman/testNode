@@ -308,7 +308,7 @@ try {
         // console.log("delayFuncRandom", delayTime);
         // await new Promise((resolve) => setTimeout(resolve, delayTime));
         script.delayFuncRandom(2000,10000);
-        console.log("wait numberOfSwipeUp");
+        console.log("*************wait numberOfSwipeUp***************");
         var numberOfSwipeUp =
         Math.floor(Math.random() * 3) + 1;
         console.log("numberOfSwipeUP contact",numberOfSwipeUp);
