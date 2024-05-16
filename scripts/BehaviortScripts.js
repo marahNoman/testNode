@@ -1,5 +1,7 @@
 import fs from 'fs';
 import {AVDScript} from './avd_script.js';
+import { MainScript } from "./MainScript.js";
+
 import {WhatsappActivation} from './ActivationScript.js';
 import {Python} from '../helpers/Python.js';
 import {WhatsAppHelper} from '../helpers/WhatsApp.js'
@@ -20,6 +22,7 @@ const __dirname = path.dirname(__filename);
 
 var user =os.userInfo().username;
 const ADB = `/home/${user}/Android/Sdk/platform-tools/adb`;
+const mainScript = new MainScript();
 
 //const textToImage = require('text-to-image');
 export class BehaviourScript{
@@ -1012,5 +1015,209 @@ export class BehaviourScript{
         return new Promise(resolve => setTimeout(resolve, time));
     }
     //#endregion
+    async swipeAndsendMessage(){
+        console.log("inside stopWhatsapp test >>>>>>>>>>>>>>>>>>>>>>>>");
+        const py = new Python();
+        var stop = exec(
+          `${ADB} -s emulator-${this.emulatorPort} shell am force-stop com.whatsapp`
+        );
+        await new Promise((resolve, reject) => {
+          stop.on("close", (code) => {
+            resolve();
+          });
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        var startApp = exec(
+          `${ADB} -s emulator-${this.emulatorPort} shell am start -n com.whatsapp/.Main`
+        );
+        await new Promise((resolve, reject) => {
+          startApp.on("close", (code) => {
+            resolve();
+          });
+        });
+        console.log("Wait Random");
+        
+        let screenSizeWH = "";
+        var screenWidth = 0;
+        var screenHeight = 0;
+
+        try {
+          const screenSize = exec(ADB + " -s emulator-${this.emulatorPort} shell wm size");
+          await new Promise((resolve, reject) => {
+            screenSize.stderr.on("data", (error) => {
+              console.log("error: ", error);
+              reject();
+            });
+            screenSize.stdout.on("data", (data) => {
+              screenSizeWH = data.trim();
+            });
+            screenSize.on("close", (code) => {
+              resolve();
+            });
+          });
+          const match = screenSizeWH.match(/\d+/g);
+          if (match && match.length === 2) {
+            screenWidth = parseInt(match[0]);
+            screenHeight = parseInt(match[1]);
+            console.log("Screen Width:", screenWidth);
+            console.log("Screen Height:", screenHeight);
+          } else {
+            throw new Error("Failed to get screen size");
+          }
+        } catch (err) {
+          console.error("Error:", err);
+          throw err;
+        }
+        const minSwipeExtent = screenHeight / 2;
+        const maxSwipeExtent = screenHeight;
+        const minSwipeSpeed = 100;
+        const maxSwipeSpeed = 300;
+
+        var swipeUpExtent =
+          Math.floor(Math.random() * (maxSwipeExtent - minSwipeExtent + 1)) +
+          minSwipeExtent;
+        var swipeUpSpeed =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+        console.log("minSwipeExtent:", minSwipeExtent);
+        console.log("maxSwipeExtent:", maxSwipeExtent);
+        console.log("swipeUpExtent:", swipeUpExtent);
+        console.log("parseInt(swipeUpSpeed):", parseInt(swipeUpSpeed));
+
+
+        mainScript.delayFuncRandom(2000,10000);
+        var numberOfSwipeUp =
+        Math.floor(Math.random() * 3) + 1;
+        console.log("numberOfSwipeUP contact",numberOfSwipeUp);
+
+        for (var i = 0; i < numberOfSwipeUp; i++) {
+          var start_end_x=mainScript.getRandomNumber(40,1040);
+          var swipeUpSpeed1 =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+          mainScript.swipeRandom(
+            start_end_x,
+            mainScript.getRandomNumber(300,1300),
+            start_end_x,
+            mainScript.getRandomNumber(200,500),
+            parseInt(swipeUpSpeed1)
+          );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+        } 
+        var numberOfSwipeDown =
+        Math.floor(Math.random() * 3) + 1;
+        console.log("numberOfSwipeDown contact",numberOfSwipeDown);
+        for (var i = 0; i < numberOfSwipeDown; i++) {
+          var start_end_x=mainScript.getRandomNumber(70,990);
+
+          var swipeDownSpeed1 =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+          mainScript.swipeRandom(
+            start_end_x,
+            mainScript.getRandomNumber(200,500),
+            start_end_x,
+            mainScript.getRandomNumber(300,1300),
+            parseInt(swipeDownSpeed1)
+          );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+        }
+
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+
+        console.log("Finishhhh");
+        var openChat = exec(
+          `${ADB} -s emulator-${this.emulatorPort} shell input tap 388 948`
+        );
+        await new Promise((resolve, reject) => {
+          openChat.on("close", (code) => {
+            resolve();
+          });
+        });
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+        var numberOfSwipeUp =
+        Math.floor(Math.random() * 3) + 1;
+        console.log("numberOfSwipeUP caht",numberOfSwipeUp);
+
+        for (var i = 0; i < numberOfSwipeUp; i++) {
+          var start_end_x=mainScript.getRandomNumber(70,990);
+
+          var swipeUpSpeed2 =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+          mainScript.swipeRandom(
+            start_end_x,
+            mainScript.getRandomNumber(300,1300),
+            start_end_x,
+            mainScript.getRandomNumber(200,500),
+            parseInt(swipeUpSpeed2)
+          );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+        } 
+        var numberOfSwipeDown =
+        Math.floor(Math.random() * 3) + 1;
+        console.log("numberOfSwipeDown caht",numberOfSwipeDown);
+
+        for (var i = 0; i < numberOfSwipeDown; i++) {
+          var start_end_x=mainScript.getRandomNumber(70,990);
+
+          var swipeDownSpeed2 =
+          Math.floor(Math.random() * (maxSwipeSpeed - minSwipeSpeed + 1)) +
+          minSwipeSpeed;
+          mainScript.swipeRandom(
+            start_end_x,
+            mainScript.getRandomNumber(200,500),
+            start_end_x,
+            mainScript.getRandomNumber(300,1300),
+            parseInt(swipeDownSpeed2)
+          );
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          
+        }
+       
+       
+
+        var delayTime = Math.floor(Math.random() * (10000 - 2000 + 1)) + 1000;
+        console.log("delayFuncRandom", delayTime);
+        await new Promise((resolve) => setTimeout(resolve, delayTime));
+      
+        var messageBox = await py.findAndClick(
+          `${IMG}messageBoxTest.png`,
+          null,
+          5
+        );
+        if (!messageBox) {
+          console.log("messageBox img not found");
+        } else {
+          console.log("messageBox img found");
+        }
+        var text = "Welcome";
+        var result = exec(`pythonScripts/writeText.py ${text}`);
+        await new Promise((resolve, reject) => {
+          result.stderr.on("data", (err) => {
+            console.log("python writeText -> error while typing : ", err);
+          });
+          result.on("close", (code) => {
+            console.log("python writeText -> exited with code : ", code);
+
+            resolve();
+          });
+        });
+        var sendMessage = await py.findAndClick(
+          `${IMG}sendMessageTest.png`,
+          null,
+          5
+        );
+        if (!sendMessage) {
+          console.log("sendMessage img not found");
+        } else {
+          console.log("sendMessage img found");
+        }
+
+    }
 
 }
